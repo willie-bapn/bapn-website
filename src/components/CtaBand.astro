@@ -1,0 +1,28 @@
+---
+import { cta } from '../data/site';
+
+interface Props {
+  title?: string;
+  body?: string;
+}
+
+const {
+  title = 'Ready to get on court?',
+  body = 'Sign up for a programme, or get in touch if you’re not sure which one fits.',
+} = Astro.props;
+---
+
+<section class="court-lines bg-ink-900">
+  <div
+    class="container-x flex flex-col items-start gap-6 py-14 md:flex-row md:items-center md:justify-between md:py-16"
+  >
+    <div class="max-w-xl">
+      <h2 class="text-h2 font-black tracking-tight text-white">{title}</h2>
+      <p class="mt-2 text-ink-200">{body}</p>
+    </div>
+    <div class="flex flex-wrap gap-3">
+      <a href={cta.href} class="btn-primary">{cta.label}</a>
+      <a href="/contact" class="btn-ghost-light">Ask a question</a>
+    </div>
+  </div>
+</section>

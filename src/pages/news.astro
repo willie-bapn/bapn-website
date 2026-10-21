@@ -1,0 +1,60 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { news } from '../data/site';
+
+const photos = import.meta.glob<{ default: ImageMetadata }>('../assets/photos/*.jpg', {
+  eager: true,
+});
+const photoFor = (name: string) => photos[`../assets/photos/${name}.jpg`]?.default;
+---
+
+<Base
+  title="Results & News"
+  description="Tournament results, selections and news from BAPN, Christchurch."
+>
+  <PageHero
+    eyebrow="Results &amp; news"
+    title="How our players are going."
+    lead="Tournament results, national selections and news from the academy."
+  />
+
+  <section class="bg-shuttle-50 py-16 md:py-24">
+    <div class="container-x grid gap-6 md:grid-cols-2">
+      {
+        news.map((item) => {
+          const photo = photoFor(item.photo);
+          return (
+            <a
+              href={`/news/${item.slug}`}
+              class="flex h-full flex-col overflow-hidden rounded-2xl border border-ink-100 bg-white transition hover:border-navy/40 hover:shadow-lg hover:shadow-ink-900/5"
+            >
+              {photo && (
+                <div class="aspect-16/9 overflow-hidden bg-ink-100">
+                  <Image src={photo} alt="" width={900} height={506} class="h-full w-full object-cover" />
+                </div>
+              )}
+              <div class="flex flex-1 flex-col p-6">
+                <div class="flex items-center gap-3 text-xs">
+                  <span class="rounded-full bg-navy px-2.5 py-1 font-bold text-white">{item.category}</span>
+                  <time class="font-medium text-ink-400">{item.date}</time>
+                </div>
+                <h2 class="mt-4 text-xl font-bold leading-snug tracking-tight text-ink-900">{item.title}</h2>
+                <p class="mt-3 flex-1 text-sm leading-relaxed text-ink-600">{item.excerpt}</p>
+                <span class="mt-5 text-sm font-bold text-volt-500">Read more →</span>
+              </div>
+            </a>
+          );
+        })
+      }
+    </div>
+  </section>
+
+  <CtaBand
+    title="Want to be in next season's results?"
+    body="Come and train with us. Sign up for a programme or ask about the pathway."
+  />
+</Base>

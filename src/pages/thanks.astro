@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+
+<Base title="Thanks" description="Thanks — your message is on its way to BAPN.">
+  <section class="court-lines bg-ink-900">
+    <div class="container-x py-20 md:py-28">
+      <p class="eyebrow text-volt-300">Sent</p>
+      <h1 class="mt-4 max-w-2xl text-h1 font-black leading-[1.05] tracking-tight text-white">
+        Thanks — it's on its way.
+      </h1>
+      <p class="mt-5 max-w-xl text-lg text-ink-200">
+        We reply by email, usually within two working days. If it's urgent, email
+        <a href={`mailto:${site.email}`} class="font-semibold text-white underline">{site.email}</a>.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="/" class="btn-primary">Back to the home page</a>
+        <a href="/programmes" class="btn-ghost-light">See the programmes</a>
+      </div>
+    </div>
+  </section>
+</Base>

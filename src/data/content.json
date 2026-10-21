@@ -1,0 +1,523 @@
+{
+  "site": {
+    "name": "BAPN",
+    "longName": "Badminton Academy Performance & Nutrition",
+    "tagline": "Beyond the Court, Beyond Limits",
+    "description": "BAPN is Christchurch's badminton academy for juniors and adults — BWF-certified head coaches, a structured pathway from first racket to representative level, and recovery and nutrition built into the training.",
+    "email": "info@bapn.co.nz",
+    "phone": "",
+    "venue": {
+      "name": "Zhu Badminton Centre",
+      "address": "98 Aidenfield Drive",
+      "suburb": "Wigram, Christchurch",
+      "mapQuery": "Zhu Badminton Centre, 98 Aidenfield Drive, Wigram, Christchurch"
+    },
+    "legal": {
+      "entity": "CZW Limited",
+      "nzbn": "9429051417048",
+      "tradingAs": "Badminton Academy Performance & Nutrition (BAPN)"
+    },
+    "socials": [
+      {
+        "label": "Facebook",
+        "href": "https://www.facebook.com/BAPNchc/"
+      },
+      {
+        "label": "Instagram",
+        "href": "https://www.instagram.com/bapn_chc/"
+      }
+    ]
+  },
+  "stats": [
+    {
+      "value": "BWF",
+      "label": "Level 1 & 2 certified head coaches"
+    },
+    {
+      "value": "7–17",
+      "label": "Junior tiers from foundation to elite"
+    },
+    {
+      "value": "Adults",
+      "label": "Social, club and representative squads"
+    },
+    {
+      "value": "2026",
+      "label": "National masters titles held by our coaches"
+    }
+  ],
+  "coaches": [
+    {
+      "slug": "willie-chen",
+      "name": "Willie Chen",
+      "role": "Head Coach & Academy Director",
+      "creds": [
+        "BWF Level 1",
+        "Shuttle Time",
+        "Head Coach, Badminton Canterbury",
+        "Head Coach, Badminton Mainland"
+      ],
+      "years": "15 years coaching",
+      "bio": "Former New Zealand representative specialising in doubles and mixed. Willie takes a holistic approach — a coaching philosophy focused on every detail on and off the court, including skills, match strategy, strengthening and recovery, and mental and nutrition preparation.",
+      "focus": "Intermediate to advanced doubles and mixed players",
+      "photo": "willie-chen"
+    },
+    {
+      "slug": "alex-zhao",
+      "name": "Alex Zhao",
+      "role": "Head Coach & Academy Director",
+      "creds": [
+        "BWF Level 1",
+        "Shuttle Time"
+      ],
+      "years": "9 years coaching",
+      "bio": "A Chinese National Level 1 athlete with over ten years of coaching experience. Alex's coaching is not only about improving badminton skills, but about helping players develop resilience, confidence and a strong work ethic — stepping outside their comfort zone, staying focused when training gets hard, and understanding that meaningful progress takes time and consistent effort.",
+      "focus": "Intermediate to advanced singles and mixed players",
+      "photo": "alex-zhao"
+    },
+    {
+      "slug": "cici-xie",
+      "name": "Cici Xie",
+      "role": "Head Coach",
+      "creds": [
+        "BWF Level 2",
+        "Shuttle Time",
+        "Head Coach, Badminton Canterbury",
+        "Head Coach, Badminton Mainland"
+      ],
+      "years": "15 years coaching",
+      "bio": "A passionate badminton coach focused on developing young athletes through strong technique, tactical awareness and confidence on court.",
+      "focus": "Junior high-performance development — singles and doubles technical and tactical coaching, competition preparation",
+      "photo": "cici-xie"
+    },
+    {
+      "slug": "alfred-wong",
+      "name": "Alfred Wong",
+      "role": "Head Coach & Academy Director",
+      "creds": [
+        "Badminton NZ Level 2",
+        "Head Coach, Badminton Canterbury",
+        "Head Coach, Badminton Mainland"
+      ],
+      "years": "20 years coaching",
+      "bio": "Holds a Badminton New Zealand Level 2 coaching certificate and has been a Canterbury head coach for more than 20 years, developing players who have gone on to compete internationally. He is also one of New Zealand's most successful masters players, winning three national titles at the 2026 NZ Masters National Championships. Alfred brings decades of experience to every session, helping players of all ages build sound technique, stay composed under pressure and play smart, tactical badminton.",
+      "focus": "Junior to senior high-performance development — singles and doubles, competition preparation",
+      "photo": null
+    },
+    {
+      "slug": "elly-li",
+      "name": "Elly Li",
+      "role": "Assistant Coach",
+      "creds": [
+        "Shuttle Time",
+        "2023 NZ U19 National Champion, Women's Singles"
+      ],
+      "years": "6 years coaching",
+      "bio": "2023 NZ U19 National Champion in Women's Singles. Elly is passionate about sharing her experience and helping players build their skills, confidence and enjoyment of the game — for her, coaching is as much about growth, discipline and a positive mindset on and off the court as it is about becoming a better badminton player.",
+      "focus": "Junior and adult beginners and intermediate players",
+      "photo": "elly-li"
+    },
+    {
+      "slug": "kyle-zhang",
+      "name": "Kyle Zhang",
+      "role": "Assistant Coach",
+      "creds": [
+        "Shuttle Time"
+      ],
+      "years": "2 years coaching",
+      "bio": "Kyle trained competitively in Beijing during his junior years and has coached at BAPN since May 2025. He works with everyone from junior beginners to competitive juniors and adults, with a strong focus on fundamentals, good habits and long-term development — and is just as invested in building players' confidence, perseverance and responsibility on and off the court.",
+      "focus": "Juniors, beginners and intermediate players",
+      "photo": "kyle-zhang"
+    },
+    {
+      "slug": "sean-wong",
+      "name": "Sean Wong",
+      "role": "Assistant Coach",
+      "creds": [
+        "Shuttle Time"
+      ],
+      "years": "3 years coaching",
+      "bio": "Sean believes players improve most when they enjoy the game. His goal is a positive and encouraging environment where every player can build confidence, celebrate their progress and develop at their own pace.",
+      "focus": "Juniors, beginners and intermediate players",
+      "photo": "sean-wong"
+    },
+    {
+      "slug": "ken-wong",
+      "name": "Ken Wong",
+      "role": "Assistant Coach",
+      "creds": [
+        "Shuttle Time"
+      ],
+      "years": "6 years coaching",
+      "bio": "Passionate about badminton and about helping players of all levels improve their game. Ken's focus is on building strong fundamentals, patience and a love for the sport.",
+      "focus": "Juniors, beginners and intermediate players",
+      "photo": "ken-wong"
+    },
+    {
+      "slug": "uzi-idris",
+      "name": "Uzi (Husnain) Idris",
+      "role": "Assistant Coach",
+      "creds": [],
+      "years": "3 years coaching",
+      "bio": "Uzi helps players elevate their game through tailored technique training, agility drills and match strategy. Let's smash your goals together.",
+      "focus": "Juniors, beginners and intermediate players",
+      "photo": "uzi-idris"
+    }
+  ],
+  "programs": [
+    {
+      "slug": "junior-tier-4",
+      "name": "Junior Tier 4 — Foundation",
+      "group": "junior",
+      "audience": "Ages 7–10 · beginners",
+      "summary": "First steps: grip, footwork, balance and the basic strokes, taught through games so young players want to come back.",
+      "days": [
+        "Mon",
+        "Wed"
+      ],
+      "time": "4:00–5:30pm",
+      "price": "$575",
+      "basis": "per term",
+      "capacity": 24,
+      "entry": "open",
+      "note": "Runs through school terms. Two sessions a week."
+    },
+    {
+      "slug": "junior-tier-3",
+      "name": "Junior Tier 3 — Development",
+      "group": "junior",
+      "audience": "Ages 10–17 · beginners",
+      "summary": "For teens starting out or coming back to the game. Sound technique and movement first, then match play.",
+      "days": [
+        "Mon",
+        "Wed"
+      ],
+      "time": "4:00–5:30pm",
+      "price": "$575",
+      "basis": "per term",
+      "capacity": 24,
+      "entry": "open",
+      "note": "Runs through school terms. Two sessions a week."
+    },
+    {
+      "slug": "junior-tier-2",
+      "name": "Junior Tier 2 — Intermediate",
+      "group": "junior",
+      "audience": "Ages 7–17 · intermediate",
+      "summary": "Structured technical and tactical work for players competing in school or club events, with regular match play under pressure.",
+      "days": [
+        "Mon",
+        "Wed"
+      ],
+      "time": "5:30–7:00pm",
+      "price": "$575",
+      "basis": "per term",
+      "capacity": 24,
+      "entry": "open",
+      "note": "Runs through school terms. Two sessions a week.",
+      "featured": true
+    },
+    {
+      "slug": "junior-tier-1",
+      "name": "Junior Tier 1 — Elite",
+      "group": "junior",
+      "audience": "Ages 7–17 · advanced and Canterbury representatives",
+      "summary": "The performance tier. Singles and doubles technical and tactical coaching, competition preparation, and sessions with visiting national and international coaches and players.",
+      "days": [
+        "Tue",
+        "Thu"
+      ],
+      "time": "4:00–6:00pm",
+      "price": "$575",
+      "basis": "per term",
+      "capacity": 24,
+      "entry": "selection",
+      "note": "By selection. Runs through school terms, two sessions a week."
+    },
+    {
+      "slug": "adult-tier-2",
+      "name": "Adult Tier 2 — Social & Club",
+      "group": "adult",
+      "audience": "Adults · beginners and intermediate",
+      "summary": "Coached group training for adults who want to actually improve — technique, movement and match play in a social setting.",
+      "days": [
+        "Wed"
+      ],
+      "time": "7:00–9:00pm",
+      "price": "$345",
+      "basis": "per term",
+      "capacity": 24,
+      "entry": "open",
+      "note": "Runs through school terms. One session a week. UCanBC members: $230 per term.",
+      "featured": true
+    },
+    {
+      "slug": "adult-tier-1",
+      "name": "Adult Tier 1 — Advanced & Representative",
+      "group": "adult",
+      "audience": "Adults · advanced and Canterbury representatives",
+      "summary": "High-intensity squad training for competitive adults — tactical doubles and singles work, conditioning and tournament preparation.",
+      "days": [
+        "Tue"
+      ],
+      "time": "6:00–8:00pm",
+      "price": "$345",
+      "basis": "per term",
+      "capacity": 24,
+      "entry": "selection",
+      "note": "By selection. Runs through school terms, one session a week."
+    },
+    {
+      "slug": "holiday-camp",
+      "name": "Holiday Camp",
+      "group": "camp",
+      "audience": "Ages 7–17 · all levels",
+      "summary": "A full week of coaching in the school holidays — skills, games and tournament play, with partner workshops on recovery and nutrition. One booking covers every day.",
+      "days": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri"
+      ],
+      "time": "9:00am–3:00pm",
+      "price": "$345",
+      "basis": "per camp",
+      "capacity": 35,
+      "entry": "open",
+      "note": "First or second week of each school holiday. Enrolments close the Monday before the camp, or when it's full.",
+      "featured": true
+    },
+    {
+      "slug": "social-club",
+      "name": "Saturday Social Club",
+      "group": "social",
+      "audience": "Adults and families · all levels",
+      "summary": "Open play every Saturday night. Turn up, pay on the night, get a game.",
+      "days": [
+        "Sat"
+      ],
+      "time": "7:30–9:30pm",
+      "price": "$10",
+      "basis": "per session",
+      "capacity": 50,
+      "entry": "open",
+      "note": "Every Saturday. No booking needed."
+    }
+  ],
+  "memberships": {
+    "intro": "Membership isn't required to train with us, but it pays for itself quickly and unlocks extra savings for families. Membership runs January to December and renews before Term 1.",
+    "termFees": [
+      {
+        "group": "Juniors",
+        "standard": "$575",
+        "individual": "$550",
+        "family": "$545",
+        "sessions": "20 sessions a term (2 a week)"
+      },
+      {
+        "group": "Adults",
+        "standard": "$345",
+        "individual": "$320",
+        "family": "$315",
+        "sessions": "10 sessions a term (1 a week)"
+      }
+    ],
+    "plans": [
+      {
+        "name": "Individual Membership",
+        "price": "$100",
+        "cadence": "per year",
+        "alt": "or $60 for a half-year, from July",
+        "blurb": "For any junior or adult player.",
+        "features": [
+          "Priority registration for all four training terms",
+          "$25 off every term's training fee — up to $100 a year",
+          "Priority entry to BAPN holiday camps",
+          "Partner perks: 15% off gear and a free restring at My Badminton Shop; member rates with Chiro Jacob and Halo Health Physio",
+          "$10 off private coaching sessions with our head coaches",
+          "Free BAPN T-shirt or grip pack when you join",
+          "Priority entry to annual events"
+        ]
+      },
+      {
+        "name": "Family Membership",
+        "price": "$160",
+        "cadence": "per family, per year",
+        "alt": "covers two players · $50 a year for each extra immediate family member",
+        "blurb": "For families with a junior and an adult training, or two or more juniors.",
+        "features": [
+          "Every Individual Membership benefit, for each family member",
+          "$30 off every term's training fee, for each family member",
+          "Family priority booking for term training and holiday camps",
+          "One free one-hour family private session with a head coach, once a year",
+          "Partner perks shared across the whole family"
+        ],
+        "featured": true
+      }
+    ],
+    "referral": {
+      "headline": "Bring a friend. You both save $30.",
+      "body": "Open to every BAPN player, member or not. Refer a friend who's new to BAPN and they get $30 off their first term at enrolment. Once they've completed the term — attending at least 8 of 10 sessions (16 of 20 for juniors) — you get $30 credit off your next term.",
+      "rules": [
+        "Your friend must be genuinely new to BAPN",
+        "One referral credit per player per term",
+        "Credits apply to your next term's enrolment and can't be cashed or transferred"
+      ]
+    }
+  },
+  "news": [
+    {
+      "slug": "nz-masters-national-championships-2026",
+      "title": "BAPN players and coaches shine at the NZ Masters National Championships",
+      "date": "2026",
+      "category": "Results",
+      "excerpt": "Coach Alfred Wong led the way with three national titles, with Mitch Hejl and Catherine Nguyen also winning gold and head coach Cici Xie reaching a final.",
+      "body": [
+        "BAPN players and coaches came home from the NZ Masters National Championships 2026 with a haul of titles — a proud moment for the whole academy.",
+        "BAPN coach Alfred Wong led the way with three titles: Men's Singles 50+, Men's Doubles 40+ and Men's Doubles 45+. Winning in both singles and doubles across more than one age group at a national event is a remarkable achievement.",
+        "Mitch Hejl won the Women's Singles 55+ title, and Catherine Nguyen won the Division 2 Mixed Doubles. BAPN head coach Cici Xie reached the final of the Women's Doubles 35+.",
+        "Ann Lee, Anna Ritche and Slava Sirotov also represented BAPN at the championships, and every one of them did the academy proud.",
+        "The results show that at BAPN, badminton isn't just for juniors. Adult players train with the same structure and high standards — and it shows when it counts."
+      ],
+      "photo": "p21"
+    },
+    {
+      "slug": "otago-u17-championships-2026",
+      "title": "Elsa and Rohan dominate the 2026 Otago U17 Championships",
+      "date": "2026",
+      "category": "Results",
+      "excerpt": "Two BAPN juniors finished on the podium in every event they entered — two titles for Elsa, a title and a third for Rohan, and silver together in the mixed.",
+      "body": [
+        "BAPN juniors Elsa Meng and Rohan Gala had an outstanding weekend at the 2026 Otago U17 Championships, finishing on the podium in every event they entered.",
+        "Elsa won both the Girls' Singles and the Girls' Doubles. Rohan won the Boys' Doubles and took third place in the Boys' Singles. The pair also teamed up in the Mixed Doubles and finished second.",
+        "Results like these come from hours of work on court, and both players have earned every one of them. To celebrate, BAPN's retail partner My Badminton Shop gave Elsa and Rohan each a gift to mark their success.",
+        "Congratulations, Elsa and Rohan!"
+      ],
+      "photo": "p15"
+    },
+    {
+      "slug": "juniors-national-pathway-2026",
+      "title": "BAPN juniors step onto the national pathway",
+      "date": "2026",
+      "category": "Pathway",
+      "excerpt": "Marco Sun and Katrina Huang selected for the Badminton New Zealand U15 Development Squad, and Ray Gao invited to the U15 National Camp.",
+      "body": [
+        "Three BAPN juniors have been recognised at national level this year.",
+        "Marco Sun and Katrina Huang were selected for the 2026 Badminton New Zealand U15 Development Squad. The squad brings together young players from across the country who show the skill, work ethic and potential to go further in the sport.",
+        "Ray Gao was invited to the 2026 U15 National Camp after a strong 2025 season, which included a Top 8 finish in Division 1 at the AIMS Games, one of the country's biggest intermediate-age sporting events.",
+        "This is exactly what BAPN's development pathway is built for: strong foundations first, then the support to take the next step when a player is ready. Congratulations, Marco, Katrina and Ray!"
+      ],
+      "photo": "p13"
+    },
+    {
+      "slug": "rangi-ruru-south-island-gold",
+      "title": "Rangi Ruru takes gold at the South Island Secondary Schools Championships",
+      "date": "2026",
+      "category": "Schools",
+      "excerpt": "With weekly coaching and tournament support from BAPN, Rangi Ruru's team won back-to-back gold.",
+      "body": [
+        "BAPN is proud to be the coaching partner of Rangi Ruru Girls' High School's badminton programme, and the partnership has already paid off.",
+        "With weekly coaching and tournament support from BAPN, Rangi Ruru's team won back-to-back gold at the South Island Secondary Schools Championships. It was a great result for the players and their school, and a reminder of how much school badminton can grow with the right support.",
+        "BAPN is committed to giving back to the community and helping grow the sport in Canterbury schools, and we look forward to seeing Rangi Ruru go even further."
+      ],
+      "photo": "p04"
+    }
+  ],
+  "partners": [
+    {
+      "slug": "my-badminton-shop",
+      "name": "My Badminton Shop",
+      "tier": "Gold partner",
+      "href": "https://www.mybadmintonshop.co.nz",
+      "blurb": "Sponsors BAPN all year round, with gifts for holiday camps and for players who win tournaments through the year. Members get 15% off gear and a free racket restring.",
+      "logo": "my-badminton-shop",
+      "logoBg": "light"
+    },
+    {
+      "slug": "chiro-jacob",
+      "name": "Chiro Jacob",
+      "tier": "Gold partner",
+      "href": "https://www.chirojacob.com",
+      "blurb": "Discounted assessments for BAPN members, and practical sessions on nutrition, stretching, muscle release and recovery at every holiday camp and term training block.",
+      "logo": "chiro-jacob",
+      "logoBg": "light"
+    },
+    {
+      "slug": "halo-health-physio",
+      "name": "Halo Health Physio",
+      "tier": "Gold partner",
+      "href": "https://halohealthphysio.co.nz",
+      "blurb": "Free initial assessment for BAPN members. Founder Diana Chen, lead physiotherapist for the New Zealand Men's Volleyball Team, leads our injury-awareness and recovery sessions.",
+      "logo": "halo-health-physio",
+      "logoBg": "light"
+    },
+    {
+      "slug": "ucanbc",
+      "name": "UCanBC",
+      "tier": "Bronze partner",
+      "href": "https://www.ucbadminton.club",
+      "blurb": "University of Canterbury badminton club. UCanBC members can join our Adult Tier 2 group for $230 a term instead of $345.",
+      "logo": "ucanbc",
+      "logoBg": "light"
+    }
+  ],
+  "sponsorship": {
+    "intro": "Partnerships run for 12 months and can be cash or product. These tiers are a guide — we're happy to talk about a partnership that fits your business.",
+    "tiers": [
+      {
+        "name": "Platinum",
+        "label": "Principal partner",
+        "cash": "By negotiation",
+        "product": "One partner only",
+        "perks": [
+          "Naming rights and a partnership package built around your goals"
+        ]
+      },
+      {
+        "name": "Gold",
+        "label": "",
+        "cash": "$1,500",
+        "product": "$2,000+ RRP product",
+        "perks": [
+          "Four court-side banners at training and holiday camps",
+          "Logo on the next BAPN shirt",
+          "Logo on the BAPN homepage and Partners page",
+          "Regular partner features on Instagram, Facebook and WeChat",
+          "Short video on social media promoting your business",
+          "A BAPN annual membership — individual or family",
+          "Run a workshop or demo session for players and families",
+          "Your offer promoted to BAPN members and families at all events",
+          "Present awards at BAPN events"
+        ],
+        "featured": true
+      },
+      {
+        "name": "Silver",
+        "label": "",
+        "cash": "$1,000",
+        "product": "$1,300+ RRP product",
+        "perks": [
+          "Three court-side banners at training and holiday camps",
+          "Logo on the BAPN Partners page",
+          "Partner features on Instagram, Facebook and WeChat",
+          "Short video on social media promoting your business",
+          "A BAPN annual membership — individual or family",
+          "Your offer promoted to BAPN members and families at all events",
+          "Present awards at BAPN events"
+        ]
+      },
+      {
+        "name": "Bronze",
+        "label": "",
+        "cash": "$500",
+        "product": "$650+ RRP product",
+        "perks": [
+          "Two court-side banners at training and holiday camps",
+          "Logo on the BAPN Partners page",
+          "Welcome post and partner mentions on social media"
+        ]
+      }
+    ]
+  }
+}

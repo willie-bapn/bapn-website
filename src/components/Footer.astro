@@ -1,0 +1,92 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/brand/logo.png';
+import { cta, nav, site } from '../data/site';
+---
+
+<footer class="border-t border-ink-800 bg-ink-950 text-ink-200">
+  <div class="container-x py-14 md:py-20">
+    <div class="grid gap-10 md:grid-cols-12">
+      <div class="md:col-span-5">
+        <div class="inline-block rounded-xl bg-white p-3">
+          <Image src={logo} alt={site.longName} width={220} height={96} class="h-auto w-44" />
+        </div>
+        <p class="mt-4 max-w-sm text-sm leading-relaxed text-ink-300">
+          {site.tagline}. Badminton coaching for juniors and adults in Christchurch, from first
+          racket to representative level.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-2">
+          {
+            site.socials.map((s) => (
+              <a
+                href={s.href}
+                rel="noopener noreferrer"
+                target="_blank"
+                class="rounded-lg border border-ink-700 px-3 py-2 text-xs font-semibold text-ink-200 transition hover:border-volt-300 hover:text-volt-300"
+              >
+                {s.label}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="md:col-span-3">
+        <h2 class="eyebrow text-ink-400">Explore</h2>
+        <ul class="mt-4 space-y-2.5 text-sm">
+          {
+            nav.map((item) => (
+              <li>
+                <a href={item.href} class="transition hover:text-volt-300">
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+          <li>
+            <a href={cta.href} class="font-bold text-white transition hover:text-volt-300">
+              {cta.label}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-4">
+        <h2 class="eyebrow text-ink-400">Find us</h2>
+        <address class="mt-4 space-y-1 text-sm not-italic leading-relaxed">
+          <p class="font-semibold text-white">{site.venue.name}</p>
+          <p>{site.venue.address}</p>
+          <p>{site.venue.suburb}</p>
+        </address>
+        <div class="mt-4 space-y-1 text-sm">
+          <p>
+            <a href={`mailto:${site.email}`} class="transition hover:text-volt-300">{site.email}</a>
+          </p>
+          {
+            site.phone && (
+              <p>
+                <a href={`tel:${site.phone}`} class="transition hover:text-volt-300">
+                  {site.phone}
+                </a>
+              </p>
+            )
+          }
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="mt-12 flex flex-col gap-4 border-t border-ink-800 pt-8 text-xs text-ink-400 sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p>
+        © {new Date().getFullYear()}
+        {site.legal.entity}, trading as {site.name}. NZBN {site.legal.nzbn}.
+      </p>
+      <div class="flex flex-wrap gap-x-5 gap-y-2">
+        <a href="/policies/terms" class="transition hover:text-volt-300">Player agreement &amp; terms</a>
+        <a href="/policies/privacy" class="transition hover:text-volt-300">Privacy</a>
+        <a href="/policies/cancellations" class="transition hover:text-volt-300">Refunds &amp; cancellations</a>
+      </div>
+    </div>
+  </div>
+</footer>

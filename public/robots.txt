@@ -1,0 +1,4 @@
+# PROTOTYPE — this is a draft site for client review, not the live BAPN site.
+# Keep it out of search results entirely. Delete this file at launch.
+User-agent: *
+Disallow: /

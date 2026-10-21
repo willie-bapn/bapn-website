@@ -1,0 +1,67 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import type { Coach } from '../data/site';
+
+interface Props {
+  coach: Coach;
+  compact?: boolean;
+}
+
+const { coach, compact = false } = Astro.props;
+
+const photos = import.meta.glob<{ default: ImageMetadata }>('../assets/coaches/*.jpg', {
+  eager: true,
+});
+const photo = coach.photo ? photos[`../assets/coaches/${coach.photo}.jpg`]?.default : undefined;
+const initials = coach.name
+  .replace(/\(.*?\)/g, '')
+  .split(/\s+/)
+  .filter(Boolean)
+  .map((w) => w[0])
+  .slice(0, 2)
+  .join('');
+---
+
+<article
+  class="flex h-full flex-col overflow-hidden rounded-2xl border border-ink-100 bg-white transition hover:shadow-lg hover:shadow-ink-900/5"
+>
+  <div class="relative aspect-4/5 overflow-hidden bg-ink-100">
+    {
+      photo ? (
+        <Image
+          src={photo}
+          alt={`${coach.name}, ${coach.role}`}
+          width={600}
+          height={750}
+          class="h-full w-full object-cover object-top"
+        />
+      ) : (
+        <div class="court-lines grid h-full w-full place-items-center bg-ink-800" aria-hidden="true">
+          <span class="text-5xl font-black tracking-tight text-white/90">{initials}</span>
+        </div>
+      )
+    }
+  </div>
+  <div class="flex flex-1 flex-col p-5">
+    <h3 class="text-lg font-bold tracking-tight text-ink-900">{coach.name}</h3>
+    <p class="mt-0.5 text-sm font-semibold text-navy">{coach.role}</p>
+    <p class="mt-0.5 text-xs text-ink-500">{coach.years}</p>
+    {
+      coach.creds.length > 0 && (
+        <ul class="mt-3 flex flex-wrap gap-1.5">
+          {coach.creds.map((c) => (
+            <li class="rounded-full bg-shuttle-100 px-2.5 py-1 text-[0.7rem] font-semibold text-ink-700">
+              {c}
+            </li>
+          ))}
+        </ul>
+      )
+    }
+    {!compact && <p class="mt-4 text-sm leading-relaxed text-ink-600">{coach.bio}</p>}
+    <p class="mt-3 text-xs text-ink-500">
+      <span class="font-semibold text-ink-700">Works with:</span>
+      {coach.focus}
+    </p>
+  </div>
+</article>

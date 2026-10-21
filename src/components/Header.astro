@@ -1,0 +1,88 @@
+---
+import { Image } from 'astro:assets';
+import logoMark from '../assets/brand/logo-mark.png';
+import { cta, nav, site } from '../data/site';
+
+const { pathname } = Astro.url;
+const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
+---
+
+<header class="sticky top-0 z-50 border-b border-ink-100 bg-white/95 backdrop-blur-md">
+  <div class="container-x flex h-16 items-center justify-between gap-4 md:h-20">
+    <a href="/" class="flex items-center gap-3" aria-label={`${site.name} home`}>
+      <Image
+        src={logoMark}
+        alt="BAPN"
+        width={240}
+        height={100}
+        loading="eager"
+        class="h-10 w-auto md:h-12"
+      />
+      <span class="hidden text-[0.65rem] font-semibold uppercase leading-tight tracking-wider text-ink-500 sm:block">
+        Badminton Academy<br />Performance &amp; Nutrition
+      </span>
+    </a>
+
+    <nav class="hidden items-center gap-1 lg:flex" aria-label="Main">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            aria-current={isActive(item.href) ? 'page' : undefined}
+            class:list={[
+              'rounded-lg px-3 py-2 text-sm font-semibold transition-colors',
+              isActive(item.href)
+                ? 'bg-shuttle-100 text-navy'
+                : 'text-ink-700 hover:bg-shuttle-100 hover:text-navy',
+            ]}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a href={cta.href} class="btn-primary hidden sm:inline-block">{cta.label}</a>
+      <button
+        type="button"
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        class="grid h-11 w-11 place-items-center rounded-lg border border-ink-200 text-ink-900 lg:hidden"
+      >
+        <span class="sr-only">Toggle menu</span>
+        <svg width="20" height="20" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <path d="M2 5h14M2 9h14M2 13h14" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <nav id="mobile-nav" hidden aria-label="Mobile" class="border-t border-ink-100 bg-white lg:hidden">
+    <div class="container-x flex flex-col py-3">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            class="rounded-lg px-3 py-3 text-base font-semibold text-ink-800 hover:bg-shuttle-100 hover:text-navy"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <a href={cta.href} class="btn-primary mt-2 text-center text-base">{cta.label}</a>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('mobile-nav');
+
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    if (menu) menu.hidden = open;
+  });
+</script>

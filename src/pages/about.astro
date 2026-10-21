@@ -1,0 +1,210 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CoachCard from '../components/CoachCard.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { coaches } from '../data/site';
+import heroPhoto from '../assets/photos/p17.jpg';
+import squadPhoto from '../assets/photos/p15.jpg';
+import workshopPhoto from '../assets/photos/p10.jpg';
+
+const philosophy = [
+  {
+    n: '01',
+    title: 'Strong fundamentals, individual approach',
+    body: 'Every player starts with the same essentials: correct grip, efficient footwork, balanced movement and sound technique. From there the coaching is shaped around the individual — age, physical development, mobility, past injuries, goals and how they learn best. Training should be challenging, enjoyable, and somewhere every player feels they belong.',
+  },
+  {
+    n: '02',
+    title: 'Learn, practise, compete, review',
+    body: "A skill isn't truly learned until it holds up in a match. Players first understand what they're learning and why. They practise it in realistic movement and game situations, test it under pressure, and look back at what worked and what needs to change. A continuous cycle that keeps players improving.",
+  },
+  {
+    n: '03',
+    title: 'Teach players to think for themselves',
+    body: "BAPN coaches don't want players relying on them for every answer. Through questions and guided feedback, players learn to work out why they lost a rally, spot patterns and decide what to change — and over time to read the game, solve problems and make confident decisions on their own.",
+  },
+  {
+    n: '04',
+    title: 'Develop for the long term',
+    body: "Progress isn't measured only by this season's results. Alongside technical and competitive skills, BAPN builds healthy training habits, discipline, resilience and respect. Players train with visiting national and international coaches and players, and those ready for the next step are supported into higher-level competition.",
+  },
+];
+
+const headCoaches = coaches.filter((c) => c.role.startsWith('Head Coach'));
+const assistants = coaches.filter((c) => !c.role.startsWith('Head Coach'));
+---
+
+<Base
+  title="About"
+  description="Why BAPN started, how we coach, and the coaches behind Badminton Academy Performance & Nutrition, Christchurch."
+>
+  <PageHero
+    eyebrow="About BAPN"
+    title="Built by coaches who wanted a better pathway for Christchurch players."
+    lead="BAPN was founded by three Badminton Canterbury coaches who shared the same concern: players in Christchurch didn't always have access to experienced coaches, structured training or a clear pathway to improve."
+    photo={heroPhoto}
+    photoAlt="A BAPN coach demonstrating technique on court"
+  />
+
+  <!-- Why we started -->
+  <section class="bg-shuttle-50 py-16 md:py-24">
+    <div class="container-x grid items-center gap-10 lg:grid-cols-12">
+      <div class="lg:col-span-6">
+        <p class="eyebrow text-navy">Why we started BAPN</p>
+        <h2 class="mt-3 text-h2 font-black tracking-tight text-ink-900">
+          The programme we believed every player deserved.
+        </h2>
+        <div class="mt-5 space-y-4 text-ink-600">
+          <p>
+            Between them, the founders brought international and national playing experience,
+            recognised coaching qualifications, many years of coaching and a proven track record of
+            developing competitive players. They started BAPN to create the kind of programme they
+            believed every player deserved.
+          </p>
+          <p>
+            From the beginning, BAPN has focused on long-term development rather than
+            one-size-fits-all coaching. Training follows a clear, structured pathway with high
+            standards at every level, while recognising that every player learns and grows in their
+            own way.
+          </p>
+          <p>
+            BAPN creates opportunities beyond regular training. National and international coaches
+            and players are regularly invited to work directly with the squad, giving players the
+            chance to learn from people who have competed and coached at the highest level.
+          </p>
+          <p>
+            Whether a junior is building strong foundations or an adult is looking to lift their
+            game, BAPN's aim is to provide the right coaching, direction, opportunities and support
+            at every stage of the journey.
+          </p>
+        </div>
+      </div>
+      <div class="lg:col-span-6">
+        <div class="overflow-hidden rounded-3xl border border-ink-100">
+          <Image
+            src={squadPhoto}
+            alt="A BAPN junior mid jump-smash during squad training"
+            width={1200}
+            height={800}
+            class="h-full w-full object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy -->
+  <section class="border-t border-ink-100 bg-white py-16 md:py-24">
+    <div class="container-x grid gap-10 lg:grid-cols-12">
+      <div class="lg:col-span-4">
+        <p class="eyebrow text-navy">Coaching philosophy</p>
+        <h2 class="mt-3 text-h2 font-black tracking-tight text-ink-900">How we develop players</h2>
+        <p class="mt-4 text-ink-600">
+          BAPN coaches players of all ages and levels, from young juniors picking up a racket for
+          the first time to adults chasing their next tournament. Four principles run through every
+          session.
+        </p>
+      </div>
+      <div class="grid gap-5 sm:grid-cols-2 lg:col-span-8">
+        {
+          philosophy.map((p) => (
+            <div class="rounded-2xl border border-ink-100 bg-shuttle-50 p-6">
+              <span class="text-sm font-black tracking-widest text-volt-500">{p.n}</span>
+              <h3 class="mt-3 text-lg font-bold tracking-tight text-ink-900">{p.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-ink-600">{p.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Nutrition -->
+  <section id="nutrition" class="court-lines scroll-mt-24 bg-ink-900 py-16 md:py-24">
+    <div class="container-x grid items-center gap-10 lg:grid-cols-12">
+      <div class="order-2 lg:order-1 lg:col-span-6">
+        <div class="overflow-hidden rounded-3xl border border-ink-700">
+          <Image
+            src={workshopPhoto}
+            alt="A partner health professional running a recovery session with BAPN players"
+            width={1200}
+            height={800}
+            class="h-full w-full object-cover"
+          />
+        </div>
+      </div>
+      <div class="order-1 lg:order-2 lg:col-span-6">
+        <p class="eyebrow text-volt-300">What the "N" in BAPN provides</p>
+        <h2 class="mt-3 text-h2 font-black tracking-tight text-white">
+          It stands for Nutrition. It means a lot more.
+        </h2>
+        <div class="mt-5 space-y-4 text-ink-200">
+          <p>
+            The academy's coaches believe that how players fuel their bodies, recover between
+            training and handle soreness matters just as much to their long-term development as time
+            on court. So rather than leaving it to chance, BAPN brings qualified health
+            professionals directly into the training environment.
+          </p>
+          <p>
+            The focus is practical. Players learn how to plan their food and hydration around
+            training so they can keep their energy up, recover well and build healthier habits away
+            from the court. In hands-on recovery sessions they're shown how to stretch, release tight
+            muscles and use simple tools safely — one recent workshop had players using a golf ball
+            to find muscle tension and work through basic self-massage.
+          </p>
+          <p>
+            Injury awareness is the other key part. Players are taught to tell the difference between
+            normal training soreness and a possible injury, to recognise when it's time to see a
+            professional, and how to reduce their risk and return to training safely.
+          </p>
+          <p>
+            Leading much of this work is <strong class="text-white">Diana Chen</strong>, a registered
+            physiotherapist, founder of Halo Health Physio and lead physiotherapist for the New
+            Zealand Men's Volleyball Team. She is joined by partner chiropractor
+            <strong class="text-white">Jacob</strong>, who comes to the academy every term to run
+            practical sessions on nutrition, stretching, muscle release and recovery.
+          </p>
+          <p class="font-semibold text-white">
+            For BAPN, the message is simple: looking after the body is part of the game.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coaches -->
+  <section id="coaches" class="scroll-mt-24 bg-shuttle-50 py-16 md:py-24">
+    <div class="container-x">
+      <div class="max-w-2xl">
+        <p class="eyebrow text-navy">The team</p>
+        <h2 class="mt-3 text-h2 font-black tracking-tight text-ink-900">Head coaches</h2>
+        <p class="mt-4 text-ink-600">
+          BWF-certified, with head-coach roles at Badminton Canterbury and Badminton Mainland, and
+          playing careers at national and international level.
+        </p>
+      </div>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {headCoaches.map((coach) => <CoachCard coach={coach} />)}
+      </div>
+
+      <div class="mt-16 max-w-2xl">
+        <h2 class="text-h2 font-black tracking-tight text-ink-900">Assistant coaches</h2>
+        <p class="mt-4 text-ink-600">
+          Every assistant coach is assessed, trained and approved by BAPN to the same coaching
+          standards. Most hold BWF Shuttle Time certification, and several are current or former
+          national-level players.
+        </p>
+      </div>
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        {assistants.map((coach) => <CoachCard coach={coach} compact />)}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Come and watch a session"
+    body="The best way to judge an academy is to see one train. Get in touch and we'll find a session for you to sit in on."
+  />
+</Base>

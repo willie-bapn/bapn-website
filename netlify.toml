@@ -1,0 +1,13 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# PROTOTYPE — belt and braces alongside robots.txt and the noindex meta tag.
+# Remove this header block at launch, or the real site stays invisible to search.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

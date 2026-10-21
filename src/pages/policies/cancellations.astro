@@ -1,0 +1,37 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import PolicySection from '../../components/PolicySection.astro';
+import { bySection, policyMeta } from '../../data/policies';
+
+const fees = bySection(2);
+const refunds = bySection(3);
+const termination = bySection(13);
+---
+
+<Base
+  title="Refunds & Cancellations"
+  description="BAPN's fees, refunds and cancellations policy — what happens with missed sessions, withdrawals and sessions BAPN cancels."
+>
+  <PageHero
+    eyebrow="Policies"
+    title="Refunds & cancellations"
+    lead="Term fees, what happens if you miss a session or withdraw, and what happens when BAPN has to cancel."
+  />
+
+  <div class="bg-shuttle-50 py-12 md:py-16">
+    <div class="container-x max-w-4xl space-y-10">
+      <PolicySection section={{ ...refunds, title: 'Refunds & cancellations' }} bare />
+      <PolicySection section={{ ...fees, title: 'Registration & fees' }} bare />
+      <PolicySection section={{ ...termination, title: 'Ending an enrolment' }} bare />
+      <p class="rounded-2xl border border-ink-100 bg-white p-5 text-sm text-ink-600">
+        These sections are part of the
+        <a href="/policies/terms" class="font-semibold text-navy underline">BAPN Player Agreement</a>,
+        {policyMeta.effective.toLowerCase()}. Questions about a refund: email
+        <a href={`mailto:${policyMeta.privacyContact.email}`} class="font-semibold text-navy underline">
+          {policyMeta.privacyContact.email}
+        </a>.
+      </p>
+    </div>
+  </div>
+</Base>

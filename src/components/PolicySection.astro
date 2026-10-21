@@ -1,0 +1,27 @@
+---
+import type { Section } from '../data/policies';
+
+interface Props {
+  section: Section;
+  /** Hide the section number, for a page that shows a single section. */
+  bare?: boolean;
+}
+
+const { section, bare = false } = Astro.props;
+---
+
+<section id={`s${section.n}`} class="scroll-mt-28">
+  <h2 class="text-xl font-black tracking-tight text-ink-900">
+    {!bare && <span class="mr-2 text-volt-500">{section.n}.</span>}{section.title}
+  </h2>
+  <ul class="mt-4 space-y-3">
+    {
+      section.items.map((item) => (
+        <li class="flex gap-3 text-base leading-relaxed text-ink-700">
+          <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-navy" aria-hidden="true" />
+          <span>{item}</span>
+        </li>
+      ))
+    }
+  </ul>
+</section>

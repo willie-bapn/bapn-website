@@ -1,0 +1,171 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { memberships, programs, site } from '../data/site';
+import heroPhoto from '../assets/photos/p12.jpg';
+---
+
+<Base
+  title="Sign up"
+  description="Sign up for a BAPN programme — junior tiers, adult squads, holiday camps and membership. We confirm your place by email."
+>
+  <PageHero
+    eyebrow="Sign up"
+    title="Tell us who's playing, and we'll do the rest."
+    lead="Fill in the form and we'll reply by email to confirm availability and how to pay. Fees are payable before the first session of the term."
+    photo={heroPhoto}
+    photoAlt="Juniors on court at a BAPN session"
+  />
+
+  <section class="bg-shuttle-50 py-16 md:py-24">
+    <div class="container-x grid gap-10 lg:grid-cols-12">
+      <div class="lg:col-span-7">
+        <form
+          name="sign-up"
+          method="POST"
+          action="/thanks"
+          data-netlify="true"
+          netlify-honeypot="company"
+          class="rounded-2xl border border-ink-100 bg-white p-6 md:p-8"
+          id="signup-form"
+        >
+          <input type="hidden" name="form-name" value="sign-up" />
+          <p class="hidden">
+            <label>Don't fill this in: <input name="company" /></label>
+          </p>
+
+          <h2 class="text-xl font-black tracking-tight text-ink-900">The player</h2>
+          <div class="mt-5 grid gap-4 sm:grid-cols-2">
+            <label class="block">
+              <span class="text-sm font-semibold text-ink-900">Player's name</span>
+              <input required name="player" class="field" />
+            </label>
+            <label class="block">
+              <span class="text-sm font-semibold text-ink-900">Player's age</span>
+              <input required name="age" type="number" min="4" max="99" inputmode="numeric" class="field" />
+            </label>
+            <label class="block sm:col-span-2">
+              <span class="text-sm font-semibold text-ink-900">Programme</span>
+              <select required name="programme" id="programme" class="field">
+                <option value="" disabled selected>Choose a programme…</option>
+                {programs.map((p) => <option value={p.slug}>{p.name} — {p.days.join(' & ')} {p.time}</option>)}
+                <option value="private">Private coaching</option>
+                <option value="unsure">Not sure — help me choose</option>
+              </select>
+            </label>
+            <label class="block sm:col-span-2">
+              <span class="text-sm font-semibold text-ink-900">Playing experience</span>
+              <select name="experience" class="field">
+                <option value="new">New to badminton</option>
+                <option value="social">Plays socially</option>
+                <option value="school">Plays for school or club</option>
+                <option value="rep">Competes at representative level</option>
+              </select>
+            </label>
+          </div>
+
+          <h2 class="mt-8 text-xl font-black tracking-tight text-ink-900">Contact details</h2>
+          <p class="mt-1 text-sm text-ink-500">For players under 18, a parent or guardian's details please.</p>
+          <div class="mt-5 grid gap-4 sm:grid-cols-2">
+            <label class="block">
+              <span class="text-sm font-semibold text-ink-900">Your name</span>
+              <input required name="contact" autocomplete="name" class="field" />
+            </label>
+            <label class="block">
+              <span class="text-sm font-semibold text-ink-900">Relationship to player</span>
+              <select name="relationship" class="field">
+                <option value="parent">Parent or guardian</option>
+                <option value="self">I'm the player</option>
+              </select>
+            </label>
+            <label class="block">
+              <span class="text-sm font-semibold text-ink-900">Email</span>
+              <input required type="email" name="email" autocomplete="email" class="field" />
+            </label>
+            <label class="block">
+              <span class="text-sm font-semibold text-ink-900">Mobile</span>
+              <input required type="tel" name="phone" autocomplete="tel" class="field" />
+            </label>
+          </div>
+
+          <h2 class="mt-8 text-xl font-black tracking-tight text-ink-900">Membership</h2>
+          <div class="mt-4 space-y-2">
+            {
+              ['None for now — term by term', ...memberships.plans.map((p) => p.name)].map((label, i) => (
+                <label class="flex items-start gap-3 rounded-xl border border-ink-100 p-3 text-sm">
+                  <input type="radio" name="membership" value={label} checked={i === 0} class="mt-1 h-4 w-4" />
+                  <span class="text-ink-900">{label}</span>
+                </label>
+              ))
+            }
+          </div>
+
+          <label class="mt-6 block">
+            <span class="text-sm font-semibold text-ink-900"
+              >Anything we should know? <span class="font-normal text-ink-400">(optional)</span></span
+            >
+            <textarea
+              name="notes"
+              rows="3"
+              class="field"
+              placeholder="Referred by a friend? Which camp days? Medical notes you'd like us to be aware of?"></textarea>
+          </label>
+
+          <label class="mt-6 flex items-start gap-3">
+            <input required type="checkbox" name="agree" class="mt-1 h-4 w-4" />
+            <span class="text-sm text-ink-600">
+              I've read the <a href="/policies/terms" class="font-semibold text-navy underline">BAPN Player Agreement</a>
+              and the <a href="/policies/cancellations" class="font-semibold text-navy underline">refunds and cancellations policy</a>.
+              For players under 18, I confirm I'm their parent or guardian.
+            </span>
+          </label>
+
+          <button type="submit" class="btn-primary mt-6">Send sign-up</button>
+          <p class="mt-3 text-xs text-ink-400">
+            Nothing is charged now. We'll confirm your place and send payment details by email.
+          </p>
+        </form>
+      </div>
+
+      <aside class="lg:col-span-5">
+        <div class="rounded-2xl border border-ink-100 bg-white p-6 md:p-8">
+          <h2 class="eyebrow text-ink-400">What happens next</h2>
+          <ol class="mt-4 space-y-4 text-sm text-ink-600">
+            {
+              [
+                ['We check availability', 'Tiers are capped at 24 players, camps at 35, so a quick check first.'],
+                ['You get an email', 'Confirming the programme, the term dates and how to pay.'],
+                ['Sign the player agreement', "It covers terms, cancellations and privacy, and it's signed once a year."],
+                ['Turn up and play', 'Non-marking court shoes, a water bottle, and a racket if you have one.'],
+              ].map(([t, b], i) => (
+                <li class="flex gap-3">
+                  <span class="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-navy text-xs font-black text-white">{i + 1}</span>
+                  <span>
+                    <span class="block font-bold text-ink-900">{t}</span>
+                    <span class="mt-0.5 block">{b}</span>
+                  </span>
+                </li>
+              ))
+            }
+          </ol>
+          <p class="mt-6 border-t border-ink-100 pt-4 text-sm text-ink-500">
+            Rather talk to someone? Email <a href={`mailto:${site.email}`} class="font-semibold text-navy underline">{site.email}</a>.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Base>
+
+<script>
+  // Pre-select the programme when linked as /sign-up?programme=junior-tier-2
+  const q = new URLSearchParams(location.search);
+  const programme = q.get('programme');
+  const select = document.getElementById('programme') as HTMLSelectElement | null;
+  if (programme && select && [...select.options].some((o) => o.value === programme)) select.value = programme;
+  const membership = q.get('membership');
+  if (membership) {
+    const radio = document.querySelector<HTMLInputElement>(`input[name="membership"][value="${CSS.escape(membership)}"]`);
+    if (radio) radio.checked = true;
+  }
+</script>

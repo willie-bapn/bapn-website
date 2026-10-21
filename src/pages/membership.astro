@@ -1,0 +1,240 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { cta, memberships } from '../data/site';
+import heroPhoto from '../assets/photos/p21.jpg';
+
+const { intro, termFees, plans, referral } = memberships;
+
+const faqs = [
+  {
+    q: 'Do I have to be a member to train?',
+    a: 'No. You can enrol term by term without a membership. Membership is optional, but it pays for itself quickly: the per-term discount alone covers the fee over a year.',
+  },
+  {
+    q: 'When does membership run?',
+    a: 'January to December, renewed before Term 1. For Individual Membership, the full-year rate applies if you join before July and the half-year rate from July. Family Membership is full-year only.',
+  },
+  {
+    q: 'Who counts as family?',
+    a: 'Immediate family only. Family Membership covers up to two registered players — at least one junior and one adult, or at least two juniors — with extra immediate family members added for $50 a year each.',
+  },
+  {
+    q: 'Can a term fee be shared between siblings?',
+    a: "No. Term fees are per player, even under a Family Membership — each registered player is named.",
+  },
+  {
+    q: 'What if we miss sessions or need to withdraw?',
+    a: 'See our refunds and cancellations policy. In short: term fees are non-refundable once training has started except in exceptional circumstances; if BAPN cancels a session, a make-up or credit is offered.',
+  },
+];
+---
+
+<Base
+  title="Membership"
+  description="BAPN membership — individual and family memberships, term fees, and the friends referral programme."
+>
+  <PageHero
+    eyebrow="Membership"
+    title="Train year-round and save, as a player or as a family."
+    lead={intro}
+    photo={heroPhoto}
+    photoAlt="BAPN players and partners at a presentation"
+  />
+
+  <!-- Term fees -->
+  <section class="bg-shuttle-50 py-16 md:py-24">
+    <div class="container-x">
+      <div class="max-w-2xl">
+        <p class="eyebrow text-navy">Term fees</p>
+        <h2 class="mt-3 text-h2 font-black tracking-tight text-ink-900">What a term costs</h2>
+        <p class="mt-4 text-ink-600">
+          Terms are ten weeks. Juniors train twice a week, adults once. Members pay less every term.
+        </p>
+      </div>
+      <div class="mt-8 overflow-x-auto rounded-2xl border border-ink-100 bg-white">
+        <table class="w-full min-w-[36rem] text-left text-sm">
+          <thead class="bg-shuttle-100 text-xs uppercase tracking-wider text-ink-500">
+            <tr>
+              <th class="px-5 py-3 font-semibold">Group</th>
+              <th class="px-5 py-3 font-semibold">Standard term fee</th>
+              <th class="px-5 py-3 font-semibold">Individual member</th>
+              <th class="px-5 py-3 font-semibold">Family member</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              termFees.map((row) => (
+                <tr class="border-t border-ink-100">
+                  <td class="px-5 py-4">
+                    <span class="font-bold text-ink-900">{row.group}</span>
+                    <span class="block text-xs text-ink-500">{row.sessions}</span>
+                  </td>
+                  <td class="px-5 py-4 text-lg font-black text-ink-900">{row.standard}</td>
+                  <td class="px-5 py-4 text-lg font-black text-navy">{row.individual}</td>
+                  <td class="px-5 py-4 text-lg font-black text-volt-500">{row.family}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-4 text-sm text-ink-500">
+        All prices include GST. Fees are payable before the first session of each term. Holiday camps
+        are $345 per camp; Saturday Social Club is $10 a night.
+      </p>
+    </div>
+  </section>
+
+  <!-- Plans -->
+  <section class="border-t border-ink-100 bg-white py-16 md:py-24">
+    <div class="container-x">
+      <div class="max-w-2xl">
+        <p class="eyebrow text-navy">Membership</p>
+        <h2 class="mt-3 text-h2 font-black tracking-tight text-ink-900">Two options</h2>
+      </div>
+      <div class="mt-10 grid gap-6 lg:grid-cols-2">
+        {
+          plans.map((plan) => (
+            <article
+              class:list={[
+                'relative flex h-full flex-col rounded-2xl border p-6 md:p-8',
+                plan.featured
+                  ? 'border-ink-900 bg-ink-900 text-white shadow-xl shadow-ink-900/10'
+                  : 'border-ink-100 bg-shuttle-50',
+              ]}
+            >
+              {plan.featured && (
+                <span class="absolute -top-3 left-6 rounded-full bg-volt-500 px-3 py-1 text-[0.65rem] font-black uppercase tracking-wide text-white">
+                  Best for families
+                </span>
+              )}
+              <h3 class:list={['text-xl font-bold tracking-tight', plan.featured ? 'text-white' : 'text-ink-900']}>
+                {plan.name}
+              </h3>
+              <p class:list={['mt-1 text-sm', plan.featured ? 'text-ink-200' : 'text-ink-600']}>{plan.blurb}</p>
+              <p class="mt-6 flex flex-wrap items-baseline gap-x-2">
+                <span class:list={['text-4xl font-black tracking-tight', plan.featured ? 'text-volt-300' : 'text-ink-900']}>
+                  {plan.price}
+                </span>
+                <span class="text-sm text-ink-400">{plan.cadence}</span>
+              </p>
+              <p class:list={['mt-1 text-sm', plan.featured ? 'text-ink-300' : 'text-ink-500']}>{plan.alt}</p>
+              <ul class:list={['mt-6 flex-1 space-y-2.5 border-t pt-6 text-sm', plan.featured ? 'border-ink-700' : 'border-ink-100']}>
+                {plan.features.map((f) => (
+                  <li class="flex gap-2.5">
+                    <span class:list={['mt-0.5 font-black', plan.featured ? 'text-volt-300' : 'text-volt-500']}>✓</span>
+                    <span class={plan.featured ? 'text-ink-200' : 'text-ink-600'}>{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href={`${cta.href}?membership=${encodeURIComponent(plan.name)}`}
+                class:list={['mt-6 rounded-lg px-4 py-3 text-center text-sm font-bold transition', plan.featured ? 'bg-volt-500 text-white hover:bg-volt-400' : 'bg-navy text-white hover:bg-ink-800']}
+              >
+                Join as a member
+              </a>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="mt-8 rounded-2xl border border-ink-100 bg-shuttle-50 p-6">
+        <p class="text-sm font-bold text-ink-900">Family Membership by family size</p>
+        <div class="mt-3 flex flex-wrap gap-2 text-sm">
+          {
+            [
+              ['2', '$160'],
+              ['3', '$210'],
+              ['4', '$260'],
+              ['5', '$310'],
+              ['6', '$360'],
+            ].map(([n, fee]) => (
+              <span class="rounded-full bg-white px-3 py-1.5 ring-1 ring-ink-100">
+                <span class="text-ink-500">{n} players</span> <span class="font-bold text-ink-900">{fee}</span>
+              </span>
+            ))
+          }
+        </div>
+        <p class="mt-3 text-xs text-ink-500">
+          Each family member still saves $30 off their own term fee every term, so bigger families
+          come out well ahead.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Referral -->
+  <section class="court-lines bg-ink-900 py-16 md:py-24">
+    <div class="container-x grid gap-8 lg:grid-cols-12 lg:items-center">
+      <div class="lg:col-span-7">
+        <p class="eyebrow text-volt-300">Friends referral programme</p>
+        <h2 class="mt-3 text-h2 font-black tracking-tight text-white">{referral.headline}</h2>
+        <p class="mt-4 text-ink-200">{referral.body}</p>
+      </div>
+      <div class="lg:col-span-5">
+        <ul class="space-y-3 rounded-2xl border border-ink-700 bg-ink-800/60 p-6 text-sm text-ink-200">
+          {
+            referral.rules.map((r) => (
+              <li class="flex gap-2.5">
+                <span class="font-black text-volt-300">→</span>
+                <span>{r}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to sign up -->
+  <section class="bg-shuttle-50 py-16 md:py-24">
+    <div class="container-x">
+      <div class="max-w-2xl">
+        <p class="eyebrow text-navy">How to sign up</p>
+        <h2 class="mt-3 text-h2 font-black tracking-tight text-ink-900">Five steps</h2>
+      </div>
+      <ol class="mt-10 grid gap-5 md:grid-cols-5">
+        {
+          [
+            'Choose a membership — Individual, Family — or start term by term without one.',
+            'Sign up for the current term through this website, or get in touch directly.',
+            'Bringing a friend? Tell us so we can track your referral credit.',
+            'Complete and sign the BAPN Player Agreement — terms, cancellations and privacy — before your first session.',
+            'Come along to your first session. Welcome to BAPN.',
+          ].map((step, i) => (
+            <li class="rounded-2xl border border-ink-100 bg-white p-5">
+              <span class="grid h-8 w-8 place-items-center rounded-full bg-navy text-sm font-black text-white">{i + 1}</span>
+              <p class="mt-3 text-sm leading-relaxed text-ink-600">{step}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="border-t border-ink-100 bg-white py-16 md:py-24">
+    <div class="container-x">
+      <h2 class="text-h2 font-black tracking-tight text-ink-900">Common questions</h2>
+      <div class="mt-8 grid gap-4 md:grid-cols-2">
+        {
+          faqs.map((f) => (
+            <details class="group rounded-2xl border border-ink-100 bg-shuttle-50 p-5 open:shadow-sm">
+              <summary class="cursor-pointer list-none text-base font-bold text-ink-900">
+                <span class="flex items-center justify-between gap-4">
+                  {f.q}
+                  <span class="text-volt-500 transition group-open:rotate-45">＋</span>
+                </span>
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-ink-600">{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

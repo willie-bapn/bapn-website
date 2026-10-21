@@ -1,0 +1,37 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import PolicySection from '../../components/PolicySection.astro';
+import { bySection, policyMeta } from '../../data/policies';
+
+const privacy = bySection(12);
+const media = bySection(7);
+const comms = bySection(8);
+---
+
+<Base
+  title="Privacy"
+  description="How BAPN collects, uses, stores and protects personal information, including information about children, under the Privacy Act 2020."
+>
+  <PageHero
+    eyebrow="Policies"
+    title="Privacy"
+    lead="How BAPN handles personal information — including information about junior players — under the Privacy Act 2020 and the Health Information Privacy Code 2020."
+  />
+
+  <div class="bg-shuttle-50 py-12 md:py-16">
+    <div class="container-x max-w-4xl space-y-10">
+      <PolicySection section={{ ...privacy, title: 'Confidentiality & privacy' }} bare />
+      <PolicySection section={{ ...media, title: 'Photos & video' }} bare />
+      <PolicySection section={{ ...comms, title: 'How we contact you' }} bare />
+      <p class="rounded-2xl border border-ink-100 bg-white p-5 text-sm text-ink-600">
+        Privacy contact: {policyMeta.privacyContact.name},
+        <a href={`mailto:${policyMeta.privacyContact.email}`} class="font-semibold text-navy underline">
+          {policyMeta.privacyContact.email}
+        </a>. These sections are part of the
+        <a href="/policies/terms" class="font-semibold text-navy underline">BAPN Player Agreement</a>,
+        {policyMeta.effective.toLowerCase()}.
+      </p>
+    </div>
+  </div>
+</Base>
