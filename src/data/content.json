@@ -519,5 +519,32 @@
         ]
       }
     ]
+  },
+  "schools": {
+    "intro": "BAPN coaches go into schools and coach on site — weekly sessions, term blocks and tournament preparation, built around the school's timetable.",
+    "offers": [
+      {
+        "title": "Weekly coaching",
+        "body": "A BAPN coach at your school every week, before school, at lunchtime or after school. Technique and movement first, then games and match play."
+      },
+      {
+        "title": "Term blocks",
+        "body": "A structured block of sessions over a term — a beginner block for a year group, or a squad block for the players who compete."
+      },
+      {
+        "title": "Tournament preparation",
+        "body": "Targeted sessions and on-the-day support before the secondary schools championships and regional events."
+      },
+      {
+        "title": "A pathway after school",
+        "body": "Players who want more can step into BAPN's junior tiers at Zhu Badminton Centre, and the best into Tier 1 and representative badminton."
+      }
+    ],
+    "schools": [
+      {
+        "name": "Rangi Ruru Girls' High School",
+        "note": "Coaching partner. Back-to-back gold at the South Island Secondary Schools Championships."
+      }
+    ]
   }
 }

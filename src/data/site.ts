@@ -115,12 +115,18 @@ export const memberships: Memberships = content.memberships;
 export const news: NewsItem[] = content.news;
 export const partners: Partner[] = content.partners as Partner[];
 export const sponsorship: { intro: string; tiers: Tier[] } = content.sponsorship;
+export const schools: {
+  intro: string;
+  offers: { title: string; body: string }[];
+  schools: { name: string; note: string }[];
+} = content.schools;
 
 /** Site navigation is structural, not content — it stays in code. */
 export const nav = [
   { label: 'About', href: '/about' },
   { label: 'Programmes', href: '/programmes' },
   { label: 'Membership', href: '/membership' },
+  { label: 'Schools', href: '/schools' },
   { label: 'News', href: '/news' },
   { label: 'Partners', href: '/partners' },
   { label: 'Contact', href: '/contact' },
