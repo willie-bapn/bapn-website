@@ -41,7 +41,7 @@ npm run build      # static output to dist/
 
 `/contact` and `/sign-up` are Netlify Forms (`data-netlify="true"`, honeypot field `company`,
 success page `/thanks`). Both forms notify `info@bapn.co.nz` on every submission (Netlify → Forms → notifications).
-Form detection is on for the site (`processing_settings.ignore_html_forms: false`); if the site is
+Form detection is on for the site (BAPN's Netlify project `bapn-nz`, enabled 2026-10-24) (`processing_settings.ignore_html_forms: false`); if the site is
 ever recreated on another Netlify account, that flag must be turned on again before forms work.
 
 ## Before go-live
