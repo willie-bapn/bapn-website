@@ -32,14 +32,15 @@ npm run build      # static output to dist/
 ## Forms
 
 `/contact` and `/sign-up` are Netlify Forms (`data-netlify="true"`, honeypot field `company`,
-success page `/thanks`). Notification email is set in the Netlify UI: Forms → Settings →
-notifications → `info@bapn.co.nz`.
+success page `/thanks`). Both forms notify `info@bapn.co.nz` on every submission (Netlify → Forms → notifications).
+Form detection is on for the site (`processing_settings.ignore_html_forms: false`); if the site is
+ever recreated on another Netlify account, that flag must be turned on again before forms work.
 
 ## Before go-live
 
 - [ ] Remove `<meta name="robots" content="noindex">` in `src/layouts/Base.astro`
 - [ ] Delete `public/robots.txt` (or replace with an allow-all)
 - [ ] Remove the `X-Robots-Tag` header block from `netlify.toml`
-- [ ] Set form notifications to `info@bapn.co.nz`
+- [x] Set form notifications to `info@bapn.co.nz` (done 2026-10-23 via API: form detection on, email hooks on both forms)
 - [ ] Add the domain in Netlify and the DNS records at the registrar (see Kiwi Cloud Homes' handover notes)
 - [ ] Replace the interim hero photo if BAPN supplies a new one
