@@ -52,13 +52,13 @@ const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(site.venue.ma
             <label class="block">
               <span class="text-sm font-semibold text-ink-900">What's this about?</span>
               <select name="topic" id="topic" class="field">
-                <option value="joining">Joining the academy</option>
-                <option value="private">Private coaching</option>
-                <option value="camps">Holiday camps</option>
-                <option value="membership">Membership</option>
-                <option value="schools">School coaching</option>
-                <option value="partnership">Partnership / sponsorship</option>
-                <option value="other">Something else</option>
+                <option value="Joining the academy" data-key="joining">Joining the academy</option>
+                <option value="Private coaching" data-key="private">Private coaching</option>
+                <option value="Holiday camps" data-key="camps">Holiday camps</option>
+                <option value="Membership" data-key="membership">Membership</option>
+                <option value="School coaching" data-key="schools">School coaching</option>
+                <option value="Partnership / sponsorship" data-key="partnership">Partnership / sponsorship</option>
+                <option value="Something else" data-key="other">Something else</option>
               </select>
             </label>
             <label class="block sm:col-span-2">
@@ -134,5 +134,6 @@ const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(site.venue.ma
   // Pre-select the topic when linked as /contact?topic=schools
   const topic = new URLSearchParams(location.search).get('topic');
   const select = document.getElementById('topic') as HTMLSelectElement | null;
-  if (topic && select && [...select.options].some((o) => o.value === topic)) select.value = topic;
+  const match = topic && select ? [...select.options].find((o) => o.dataset.key === topic) : null;
+  if (match && select) select.value = match.value;
 </script>

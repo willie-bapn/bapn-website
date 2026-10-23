@@ -48,18 +48,18 @@ import heroPhoto from '../assets/photos/p12.jpg';
               <span class="text-sm font-semibold text-ink-900">Programme</span>
               <select required name="programme" id="programme" class="field">
                 <option value="" disabled selected>Choose a programme…</option>
-                {programs.map((p) => <option value={p.slug}>{p.name} — {p.days.join(' & ')} {p.time}</option>)}
-                <option value="private">Private coaching</option>
-                <option value="unsure">Not sure — help me choose</option>
+                {programs.map((p) => <option value={p.name} data-key={p.slug}>{p.name} — {p.days.join(' & ')} {p.time}</option>)}
+                <option value="Private coaching" data-key="private">Private coaching</option>
+                <option value="Not sure — help me choose" data-key="unsure">Not sure — help me choose</option>
               </select>
             </label>
             <label class="block sm:col-span-2">
               <span class="text-sm font-semibold text-ink-900">Playing experience</span>
               <select name="experience" class="field">
-                <option value="new">New to badminton</option>
-                <option value="social">Plays socially</option>
-                <option value="school">Plays for school or club</option>
-                <option value="rep">Competes at representative level</option>
+                <option value="New to badminton">New to badminton</option>
+                <option value="Plays socially">Plays socially</option>
+                <option value="Plays for school or club">Plays for school or club</option>
+                <option value="Competes at representative level">Competes at representative level</option>
               </select>
             </label>
           </div>
@@ -74,8 +74,8 @@ import heroPhoto from '../assets/photos/p12.jpg';
             <label class="block">
               <span class="text-sm font-semibold text-ink-900">Relationship to player</span>
               <select name="relationship" class="field">
-                <option value="parent">Parent or guardian</option>
-                <option value="self">I'm the player</option>
+                <option value="Parent or guardian">Parent or guardian</option>
+                <option value="I'm the player">I'm the player</option>
               </select>
             </label>
             <label class="block">
@@ -162,7 +162,8 @@ import heroPhoto from '../assets/photos/p12.jpg';
   const q = new URLSearchParams(location.search);
   const programme = q.get('programme');
   const select = document.getElementById('programme') as HTMLSelectElement | null;
-  if (programme && select && [...select.options].some((o) => o.value === programme)) select.value = programme;
+  const match = programme && select ? [...select.options].find((o) => o.dataset.key === programme) : null;
+  if (match && select) select.value = match.value;
   const membership = q.get('membership');
   if (membership) {
     const radio = document.querySelector<HTMLInputElement>(`input[name="membership"][value="${CSS.escape(membership)}"]`);
