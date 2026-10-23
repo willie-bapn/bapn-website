@@ -3,6 +3,12 @@
 Website for **BAPN — Badminton Academy Performance & Nutrition**, Christchurch.
 Owned by CZW Limited (trading as BAPN). Built by Kiwi Cloud Homes.
 
+## Where it runs
+
+- Code: **github.com/willie-bapn/bapn-website** (BAPN's account; Kim is a collaborator)
+- Hosting: BAPN's Netlify, project **bapn-nz** → https://bapn-nz.netlify.app, deploying from `main`
+- Every push to `main` goes live. Pull requests get a preview URL.
+
 ## Run it
 
 ```bash
