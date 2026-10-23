@@ -8,6 +8,8 @@ Owned by CZW Limited (trading as BAPN). Built by Kiwi Cloud Homes.
 - Code: **github.com/willie-bapn/bapn-website** (BAPN's account; Kim is a collaborator)
 - Hosting: BAPN's Netlify, project **bapn-nz** → https://bapn-nz.netlify.app, deploying from `main`
 - Every push to `main` goes live. Pull requests get a preview URL.
+- The repo is public: Netlify's free plan allows one Git contributor on private repos, and
+  nothing here is secret — it's the source of a public website.
 
 ## Run it
 
