@@ -34,7 +34,7 @@ const photoFor = (name: string) => photos[`../assets/photos/${name}.jpg`]?.defau
             >
               {photo && (
                 <div class="aspect-16/9 overflow-hidden bg-ink-100">
-                  <Image src={photo} alt="" width={900} height={506} class="h-full w-full object-cover" />
+                  <Image src={photo} alt="" width={900} class="h-full w-full object-cover object-top" />
                 </div>
               )}
               <div class="flex flex-1 flex-col p-6">
