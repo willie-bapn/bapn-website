@@ -31,7 +31,7 @@ const slotsFor = (day: string) =>
   <PageHero
     eyebrow="Programmes"
     title="A tier for every player, from first racket to representative level."
-    lead="Term programmes run through the school terms at Zhu Badminton Centre, Wigram. Juniors train twice a week, adults once. Holiday camps run in the school holidays."
+    lead="Term programmes at Zhu Badminton Centre, Wigram. Juniors twice a week, adults once. Camps in the school holidays."
     photo={heroPhoto}
     photoAlt="Juniors training on court at Zhu Badminton Centre"
   />
@@ -43,8 +43,8 @@ const slotsFor = (day: string) =>
         <p class="eyebrow text-navy">Juniors · ages 7–17</p>
         <h2 class="mt-3 text-h2 font-black tracking-tight text-ink-900">Four tiers. One pathway.</h2>
         <p class="mt-4 text-ink-600">
-          Players start where they are and move up as they're ready. Tiers 4 to 2 are open entry;
-          Tier 1 is by selection. Every tier trains twice a week through the school term.
+          Start where you are, move up when you're ready. Tiers 4 to 2 are open; Tier 1 is by
+          selection.
         </p>
       </div>
       <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -62,9 +62,8 @@ const slotsFor = (day: string) =>
           Badminton isn't just for juniors.
         </h2>
         <p class="mt-4 text-ink-600">
-          Adult players train with the same structure and standards — and it shows when it counts.
-          BAPN adults came home from the 2026 NZ Masters National Championships with a haul of
-          titles.
+          Same structure, same standards. BAPN adults came home from the 2026 NZ Masters with a haul
+          of titles.
         </p>
       </div>
       <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -80,19 +79,13 @@ const slotsFor = (day: string) =>
       <div class="lg:col-span-5">
         <p class="eyebrow text-navy">School holidays</p>
         <h2 class="mt-3 text-h2 font-black tracking-tight text-ink-900">Holiday camps</h2>
-        <p class="mt-4 text-ink-600">
-          A full week, Monday to Friday, 9am to 3pm, for ages 7–17 at every level. Skills in the
-          morning, games and tournament play in the afternoon, and our partner health professionals
-          drop in for practical sessions on recovery and nutrition.
-        </p>
-        <p class="mt-4 text-ink-600">
-          Camps run in either the first or second week of each school holiday — dates are announced
-          each term. Enrolments close the Monday before the camp starts, or earlier if it's full.
-        </p>
-        <p class="mt-4 text-sm text-ink-500">
-          Can't make the full week? Tell us which days when you sign up — a minimum of three days
-          applies.
-        </p>
+        <ul class="ticks mt-5 text-ink-600">
+          <li>Monday to Friday, 9am–3pm, ages 7–17, every level</li>
+          <li>Skills in the morning, games and tournament play in the afternoon</li>
+          <li>Recovery and nutrition sessions with our partner health professionals</li>
+          <li>First or second week of each school holiday — dates announced each term</li>
+          <li>Can't do the full week? Minimum three days — tell us which when you sign up</li>
+        </ul>
       </div>
       <div class="lg:col-span-7">
         <div class="grid gap-6 md:grid-cols-2">
@@ -101,8 +94,8 @@ const slotsFor = (day: string) =>
             <p class="eyebrow text-ink-400">Private coaching</p>
             <h3 class="mt-3 text-xl font-bold tracking-tight text-ink-900">One-on-one with a head coach</h3>
             <p class="mt-3 flex-1 text-sm leading-relaxed text-ink-600">
-              Individual sessions by arrangement, for players working on something specific or
-              preparing for a tournament. Members get $10 off every private session.
+              By arrangement, for something specific or a tournament coming up. Members get $10
+              off.
             </p>
             <a href="/contact?topic=private" class="btn-ghost mt-5 text-center">Ask about private coaching</a>
           </div>
@@ -120,8 +113,7 @@ const slotsFor = (day: string) =>
           <h2 class="mt-3 text-h2 font-black tracking-tight text-ink-900">A training week at BAPN</h2>
           <p class="mt-4 text-ink-600">
             All sessions at {site.venue.name}, {site.venue.address}, {site.venue.suburb}. Terms
-            follow the Canterbury school terms — ten weeks each — and term dates are published here
-            before each term.
+            follow the school terms; dates are published here before each one.
           </p>
         </div>
         <a href={cta.href} class="btn-dark">{cta.label} for a programme</a>
@@ -172,13 +164,8 @@ const slotsFor = (day: string) =>
           Coaching partner to Canterbury schools.
         </h2>
         <p class="mt-4 text-ink-600">
-          BAPN coaches run weekly sessions and tournament support for school badminton programmes.
-          Rangi Ruru Girls' High School, coached by BAPN, won back-to-back gold at the South Island
-          Secondary Schools Championships.
-        </p>
-        <p class="mt-4 text-ink-600">
-          If your school would like coaching, a term block or help preparing for a tournament, get
-          in touch and we'll build something around your timetable.
+          Weekly sessions, term blocks and tournament support, on your courts. Rangi Ruru, coached
+          by BAPN, won back-to-back South Island Secondary Schools gold.
         </p>
       </div>
       <div class="lg:col-span-5 lg:text-right">
@@ -189,6 +176,6 @@ const slotsFor = (day: string) =>
 
   <CtaBand
     title="Not sure which tier fits?"
-    body="Tell us the player's age and experience and we'll point you at the right session."
+    body="Tell us the player's age and experience. We'll point you at the right one."
   />
 </Base>

@@ -12,7 +12,7 @@ import heroPhoto from '../assets/photos/p12.jpg';
   <PageHero
     eyebrow="Sign up"
     title="Tell us who's playing, and we'll do the rest."
-    lead="Fill in the form and we'll reply by email to confirm availability and how to pay. Fees are payable before the first session of the term."
+    lead="We'll reply by email with availability and how to pay. Fees are due before the first session."
     photo={heroPhoto}
     photoAlt="Juniors on court at a BAPN session"
   />
@@ -133,10 +133,10 @@ import heroPhoto from '../assets/photos/p12.jpg';
           <ol class="mt-4 space-y-4 text-sm text-ink-600">
             {
               [
-                ['We check availability', 'Tiers are capped at 24 players, camps at 35, so a quick check first.'],
-                ['You get an email', 'Confirming the programme, the term dates and how to pay.'],
-                ['Sign the player agreement', "It covers terms, cancellations and privacy, and it's signed once a year."],
-                ['Turn up and play', 'Non-marking court shoes, a water bottle, and a racket if you have one.'],
+                ['We check availability', 'Tiers are capped at 24, camps at 35.'],
+                ['You get an email', 'Programme, term dates, how to pay.'],
+                ['Sign the player agreement', 'Once a year. Terms, cancellations, privacy.'],
+                ['Turn up and play', 'Court shoes, water bottle, racket if you have one.'],
               ].map(([t, b], i) => (
                 <li class="flex gap-3">
                   <span class="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-navy text-xs font-black text-white">{i + 1}</span>
