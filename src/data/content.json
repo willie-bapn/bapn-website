@@ -478,7 +478,7 @@
         "name": "Gold",
         "label": "",
         "cash": "$1,500",
-        "product": "$2,000+ RRP product",
+        "product": "$2,000+ RRP",
         "perks": [
           "Four court-side banners at training and holiday camps",
           "Logo on the next BAPN shirt",
@@ -496,7 +496,7 @@
         "name": "Silver",
         "label": "",
         "cash": "$1,000",
-        "product": "$1,300+ RRP product",
+        "product": "$1,300+ RRP",
         "perks": [
           "Three court-side banners at training and holiday camps",
           "Logo on the BAPN Partners page",
@@ -511,7 +511,7 @@
         "name": "Bronze",
         "label": "",
         "cash": "$500",
-        "product": "$650+ RRP product",
+        "product": "$650+ RRP",
         "perks": [
           "Two court-side banners at training and holiday camps",
           "Logo on the BAPN Partners page",

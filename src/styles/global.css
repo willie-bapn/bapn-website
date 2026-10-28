@@ -149,6 +149,64 @@
     color: var(--color-volt-300);
   }
 
+  /* Small label pills. Never wrap: a two-line pill reads as a mistake. */
+  .pill {
+    display: inline-block;
+    white-space: nowrap;
+    border-radius: 999px;
+    padding: 0.25rem 0.65rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+  .pill-muted {
+    background: var(--color-shuttle-100);
+    color: var(--color-ink-600);
+  }
+  .pill-navy {
+    background: var(--color-navy);
+    color: #fff;
+  }
+  .pill-red {
+    background: var(--color-volt-500);
+    color: #fff;
+  }
+
+  /* The standard white card used across the site */
+  .card {
+    border-radius: 1rem;
+    border: 1px solid var(--color-ink-100);
+    background: #fff;
+  }
+  .card-dark {
+    border-radius: 1rem;
+    border: 1px solid var(--color-ink-900);
+    background: var(--color-ink-900);
+    color: #fff;
+  }
+
+  /* Tick list used in pricing and tier cards */
+  .ticks {
+    display: grid;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+  }
+  .ticks li {
+    display: flex;
+    gap: 0.6rem;
+  }
+  .ticks li::before {
+    content: '✓';
+    font-weight: 900;
+    color: var(--color-volt-500);
+    flex-shrink: 0;
+  }
+  .card-dark .ticks li::before {
+    color: var(--color-volt-300);
+  }
+
   .field {
     margin-top: 0.375rem;
     width: 100%;
