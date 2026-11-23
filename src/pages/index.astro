@@ -1,234 +1,696 @@
 ---
+// Homepage prototype: one flowing page with a scroll-driven opening.
+// Motion is opt-in (html.motion, set by the script below) so the page is a
+// plain stacked layout without JavaScript or with reduced motion.
 import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import Base from '../layouts/Base.astro';
-import CoachCard from '../components/CoachCard.astro';
-import ProgramCard from '../components/ProgramCard.astro';
-import CtaBand from '../components/CtaBand.astro';
 import PartnerLogo from '../components/PartnerLogo.astro';
-import { coaches, cta, news, partners, programs, site, stats } from '../data/site';
-import hero from '../assets/photos/hero-sean.jpg';
-import workshop from '../assets/photos/p11.jpg';
+import { cta, news, partners, site } from '../data/site';
+import heroPhoto from '../assets/photos/p04.jpg';
+import juniorsPhoto from '../assets/photos/p15.jpg';
+import adultsPhoto from '../assets/photos/p05.jpg';
+import privatePhoto from '../assets/photos/p18.jpg';
+import campPhoto from '../assets/photos/p13.jpg';
+import aboutPhoto from '../assets/photos/p10.jpg';
+import schoolsPhoto from '../assets/photos/rangi-ruru-gold.jpg';
 
-const featured = programs.filter((p) => p.featured);
-const headCoaches = coaches.filter((c) => c.role.startsWith('Head Coach'));
-const latest = news.slice(0, 3);
+const photos = import.meta.glob<{ default: ImageMetadata }>('../assets/photos/*.jpg', {
+  eager: true,
+});
+const photoFor = (name: string) => photos[`../assets/photos/${name}.jpg`]?.default;
+
+const strengths = [
+  ['Experienced coaching team', 'Qualified coaches with long playing and coaching careers.'],
+  ['Structured development', 'Clear training levels and a pathway to keep improving.'],
+  ['Health and performance', 'Conditioning, recovery, nutrition and injury prevention.'],
+  ['Positive community', 'Players build skills, confidence and friendships.'],
+];
+
+const quotes = [
+  {
+    text: 'They have developed not only as athletes but also in confidence, resilience, and sportsmanship.',
+    by: 'Jason, parent of Marco and Mia',
+  },
+  {
+    text: 'BAPN has been so much more than just a badminton club for Jayden. It’s really become like a second family to him.',
+    by: 'Cindy, parent of Jayden',
+  },
+  {
+    text: 'At BAPN, it’s not just about hitting the shuttle. Strength work and post-training stretching help the kids perform better and stay injury-free.',
+    by: 'Kim, parent of Katrina',
+  },
+];
 ---
 
 <Base title={site.name}>
-  <!-- Hero -->
-  <section class="court-lines relative overflow-hidden bg-ink-950">
-    <div
-      class="pointer-events-none absolute -left-32 top-1/4 h-96 w-96 rounded-full bg-volt-500/20 blur-3xl"
-      aria-hidden="true"
-    >
-    </div>
-    <div class="container-x relative grid gap-10 py-14 md:py-24 lg:grid-cols-12 lg:items-center">
-      <div class="lg:col-span-7">
-        <p class="eyebrow text-volt-300">Christchurch · juniors and adults</p>
-        <h1 class="mt-5 text-balance text-display font-black leading-[0.97] tracking-tight text-white">
-          Beyond the court,<br />
-          <span class="text-volt-300">beyond limits.</span>
-        </h1>
-        <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink-200">
-          BWF-certified coaches. A clear pathway from first racket to representative level.
-          Recovery and nutrition built in. Juniors from 7, and adults.
-        </p>
-        <div class="mt-9 flex flex-wrap gap-3">
-          <a href={cta.href} class="btn-primary">{cta.label}</a>
-          <a href="/programmes" class="btn-ghost-light">See the programmes</a>
-        </div>
-        <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
-          <span class="text-xs font-semibold uppercase tracking-widest text-ink-400">Follow</span>
-          {
-            site.socials.map((s) => (
-              <a
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-sm font-semibold text-ink-200 underline decoration-volt-400/60 underline-offset-4 transition hover:text-volt-300"
-              >
-                {s.label}
-              </a>
-            ))
-          }
-        </div>
-      </div>
+  <!-- Opening: pinned, plays as you scroll -->
+  <section class="hp-pin bg-navy text-white" data-pin>
+    <div class="hp-stick">
+      <svg class="hp-court" viewBox="0 0 610 1340" fill="none" aria-hidden="true">
+        <g stroke="currentColor" stroke-width="6">
+          <rect x="3" y="3" width="604" height="1334"></rect>
+          <rect x="49" y="79" width="512" height="1182"></rect>
+          <line x1="3" y1="670" x2="607" y2="670"></line>
+          <line x1="3" y1="472" x2="607" y2="472"></line>
+          <line x1="3" y1="868" x2="607" y2="868"></line>
+          <line x1="305" y1="3" x2="305" y2="472"></line>
+          <line x1="305" y1="868" x2="305" y2="1337"></line>
+        </g>
+      </svg>
 
-      <div class="lg:col-span-5">
-        <div class="relative aspect-4/5 overflow-hidden rounded-3xl border border-ink-700 bg-ink-800 shadow-2xl shadow-black/40">
+      <div class="hp-photo">
+        <div class="hp-photo-in">
           <Image
-            src={hero}
-            alt="A BAPN player mid jump-smash at a tournament"
-            width={900}
-            height={1125}
+            src={heroPhoto}
+            alt="A BAPN coach working with a group of junior players"
+            width={1600}
             loading="eager"
             class="h-full w-full object-cover"
           />
+          <div class="hp-shade"></div>
         </div>
       </div>
-    </div>
 
-    <!-- Stat strip -->
-    <div class="relative border-t border-ink-800">
-      <div class="container-x grid grid-cols-2 gap-px lg:grid-cols-4">
-        {
-          stats.map((s) => (
-            <div class="py-7 pr-6">
-              <p class="text-3xl font-black tracking-tight text-volt-300">{s.value}</p>
-              <p class="mt-1 text-xs leading-snug text-ink-300">{s.label}</p>
-            </div>
-          ))
-        }
+      <div class="hp-head container-x">
+        <p class="eyebrow text-volt-300">Christchurch · juniors and adults</p>
+        <h1 class="hp-display mt-4">
+          Beyond<br />the court,<br /><span class="hp-outline">beyond limits.</span>
+        </h1>
       </div>
+
+      <div class="hp-cap container-x">
+        <p class="max-w-xl text-lg leading-relaxed md:text-2xl">
+          Professional BWF badminton coaching in Christchurch, helping players of all ages and
+          abilities learn, develop and improve their performance.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href={cta.href} class="btn-primary">{cta.label}</a>
+          <a href={`${cta.href}?trial=1`} class="btn-ghost-light">Book a free trial</a>
+          <a href="#programmes" class="btn-ghost-light">Explore programmes</a>
+        </div>
+      </div>
+
+      <p class="hp-hint" aria-hidden="true">Scroll ↓</p>
     </div>
   </section>
 
-  <!-- Why BAPN -->
-  <section class="bg-shuttle-50 py-16 md:py-24">
+  <!-- 1. Programmes -->
+  <section id="programmes" class="hp-band bg-white">
     <div class="container-x">
-      <div class="max-w-2xl">
-        <p class="eyebrow text-navy">Why BAPN</p>
-        <h2 class="mt-3 text-h2 font-black tracking-tight text-ink-900">
-          Started by three Badminton Canterbury coaches.
-        </h2>
-        <p class="mt-4 text-ink-600">
-          Christchurch players needed experienced coaching and a clear way to improve. BAPN is
-          that programme.
-        </p>
-      </div>
-      <div class="mt-10 grid gap-5 md:grid-cols-3">
+      <p class="hp-num text-volt-500" data-reveal>01</p>
+      <h2 class="hp-title text-navy" data-reveal>Find your<br />programme.</h2>
+      <div class="mt-10 grid gap-5 md:grid-cols-2">
         {
           [
-            [
-              'A clear pathway',
-              'Four junior tiers, two adult tiers. High standards at every level, and somewhere to go next.',
-            ],
-            [
-              'Coaches who\'ve been there',
-              'BWF-certified head coaches with Badminton Canterbury roles and national playing careers.',
-            ],
-            [
-              'The "N" — recovery and nutrition',
-              'A physio and a chiropractor teach fuelling, stretching and injury awareness — in training, hands-on.',
-            ],
-          ].map(([title, body], i) => (
-            <div class="rounded-2xl border border-ink-100 bg-white p-6">
-              <span class="text-sm font-black tracking-widest text-volt-500">0{i + 1}</span>
-              <h3 class="mt-3 text-lg font-bold tracking-tight text-ink-900">{title}</h3>
-              <p class="mt-2 text-sm leading-relaxed text-ink-600">{body}</p>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- Programmes -->
-  <section class="border-t border-ink-100 bg-white py-16 md:py-24">
-    <div class="container-x">
-      <div class="flex flex-wrap items-end justify-between gap-4">
-        <div class="max-w-2xl">
-          <p class="eyebrow text-navy">Programmes</p>
-          <h2 class="mt-3 text-h2 font-black tracking-tight text-ink-900">Find the right session.</h2>
-          <p class="mt-4 text-ink-600">
-            Term programmes at Zhu Badminton Centre. Juniors twice a week, adults once. Camps in
-            the school holidays.
-          </p>
-        </div>
-        <a href="/programmes" class="btn-ghost">All programmes &amp; timetable</a>
-      </div>
-      <div class="mt-10 grid gap-6 md:grid-cols-3">
-        {featured.map((program) => <ProgramCard program={program} />)}
-      </div>
-    </div>
-  </section>
-
-  <!-- Coaches -->
-  <section class="border-t border-ink-100 bg-shuttle-50 py-16 md:py-24">
-    <div class="container-x">
-      <div class="flex flex-wrap items-end justify-between gap-4">
-        <div class="max-w-2xl">
-          <p class="eyebrow text-navy">The coaches</p>
-          <h2 class="mt-3 text-h2 font-black tracking-tight text-ink-900">
-            Coached by people who've played at the top.
-          </h2>
-        </div>
-        <a href="/about#coaches" class="btn-ghost">Meet the whole team</a>
-      </div>
-      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {headCoaches.map((coach) => <CoachCard coach={coach} compact />)}
-      </div>
-    </div>
-  </section>
-
-  <!-- Nutrition / the N -->
-  <section class="court-lines bg-ink-900 py-16 md:py-24">
-    <div class="container-x grid items-center gap-10 lg:grid-cols-12">
-      <div class="lg:col-span-6">
-        <p class="eyebrow text-volt-300">Performance &amp; nutrition</p>
-        <h2 class="mt-3 text-h2 font-black tracking-tight text-white">
-          Looking after the body is part of the game.
-        </h2>
-        <p class="mt-4 text-ink-200">
-          Fuelling, recovery and handling soreness matter as much as court time. A physio and a
-          chiropractor teach it in training — hands-on, not handouts.
-        </p>
-        <a href="/about#nutrition" class="btn-ghost-light mt-6">How it works</a>
-      </div>
-      <div class="lg:col-span-6">
-        <div class="overflow-hidden rounded-3xl border border-ink-700">
-          <Image
-            src={workshop}
-            alt="BAPN players in a recovery and nutrition workshop"
-            width={1200}
-            height={800}
-            class="h-full w-full object-cover"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- News -->
-  <section class="bg-shuttle-50 py-16 md:py-24">
-    <div class="container-x">
-      <div class="flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <p class="eyebrow text-navy">Results &amp; news</p>
-          <h2 class="mt-3 text-h2 font-black tracking-tight text-ink-900">Latest from the academy</h2>
-        </div>
-        <a href="/news" class="btn-ghost">All news</a>
-      </div>
-      <div class="mt-10 grid gap-6 md:grid-cols-3">
-        {
-          latest.map((item) => (
-            <a
-              href={`/news/${item.slug}`}
-              class="flex h-full flex-col rounded-2xl border border-ink-100 bg-white p-6 transition hover:border-navy/40 hover:shadow-lg hover:shadow-ink-900/5"
-            >
-              <div class="flex items-center gap-3 text-xs">
-                <span class="rounded-full bg-navy px-2.5 py-1 font-bold text-white">{item.category}</span>
-                <time class="font-medium text-ink-400">{item.date}</time>
+            {
+              title: 'Juniors',
+              line: 'Ages 7–17. Four levels, from Foundation to Elite.',
+              photo: juniorsPhoto,
+              alt: 'A BAPN junior mid jump-smash',
+              side: 'left',
+            },
+            {
+              title: 'Adults',
+              line: 'Social and club training, and an advanced rep squad.',
+              photo: adultsPhoto,
+              alt: 'Two adult BAPN players in a doubles drill',
+              side: 'right',
+            },
+          ].map((c) => (
+            <a href="/programmes" class="hp-card group" data-reveal={c.side}>
+              <Image src={c.photo} alt={c.alt} width={1000} height={1250} class="hp-card-img" />
+              <div class="hp-card-body">
+                <h3 class="text-4xl font-black uppercase tracking-tight md:text-5xl">{c.title}</h3>
+                <p class="mt-2 max-w-xs text-sm text-white/85">{c.line}</p>
+                <span class="mt-4 inline-block text-sm font-bold text-volt-300">Explore →</span>
               </div>
-              <h3 class="mt-4 text-lg font-bold leading-snug tracking-tight text-ink-900">{item.title}</h3>
-              <p class="mt-3 flex-1 text-sm leading-relaxed text-ink-600">{item.excerpt}</p>
-              <span class="mt-5 text-sm font-bold text-volt-500">Read more →</span>
             </a>
           ))
         }
       </div>
+      <p class="mt-8 text-ink-600" data-reveal>
+        Members save on every term.
+        <a href="/membership" class="font-bold text-navy underline underline-offset-4">See membership</a>
+      </p>
     </div>
   </section>
 
-  <!-- Partners -->
-  <section class="border-t border-ink-100 bg-white py-14">
-    <div class="container-x">
-      <p class="eyebrow text-center text-ink-400">Our partners</p>
-      <div class="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">
-        {partners.map((p) => <PartnerLogo partner={p} />)}
+  <!-- 2. Private training -->
+  <section class="hp-band bg-navy text-white">
+    <div class="container-x grid items-center gap-10 lg:grid-cols-2">
+      <div>
+        <p class="hp-num text-volt-300" data-reveal>02</p>
+        <h2 class="hp-title" data-reveal>One<br />to one.</h2>
+        <p class="mt-6 max-w-md text-lg text-white/85" data-reveal>
+          Private training with a BAPN coach, for something specific or a tournament coming up.
+          From $50 a session.
+        </p>
+        <a href="/contact?topic=private" class="btn-primary mt-7" data-reveal>Enquire</a>
+      </div>
+      <div class="hp-frame" data-reveal="right">
+        <Image
+          src={privatePhoto}
+          alt="A BAPN coach working one to one with a player"
+          width={1200}
+          height={900}
+          class="h-full w-full object-cover"
+        />
       </div>
     </div>
   </section>
 
-  <CtaBand />
+  <!-- 3. Holiday camps -->
+  <section class="hp-band bg-white">
+    <div class="container-x grid items-center gap-10 lg:grid-cols-2">
+      <div class="hp-frame order-2 lg:order-1" data-reveal="left">
+        <Image
+          src={campPhoto}
+          alt="Juniors training across the courts at Zhu Badminton Centre"
+          width={1200}
+          height={900}
+          class="h-full w-full object-cover"
+        />
+      </div>
+      <div class="order-1 lg:order-2">
+        <p class="hp-num text-volt-500" data-reveal>03</p>
+        <h2 class="hp-title text-navy" data-reveal>Holiday<br />camps.</h2>
+        <p class="mt-6 max-w-md text-lg text-ink-600" data-reveal>
+          Mon–Fri, 9am–3pm, ages 7–17. Coaching, games and tournament play, every school holiday.
+        </p>
+        <a href={`${cta.href}?programme=holiday-camp`} class="btn-dark mt-7" data-reveal>{cta.label}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. About -->
+  <section class="hp-band bg-navy text-white">
+    <div class="container-x">
+      <p class="hp-num text-volt-300" data-reveal>04</p>
+      <h2 class="hp-title" data-reveal>Why<br />BAPN.</h2>
+      <div class="mt-10 grid gap-10 lg:grid-cols-2 lg:items-center">
+        <ol class="grid gap-6 sm:grid-cols-2">
+          {
+            strengths.map(([title, body], i) => (
+              <li data-reveal style={`--d:${i * 90}ms`}>
+                <span class="text-sm font-black tracking-widest text-volt-300">0{i + 1}</span>
+                <h3 class="mt-2 text-lg font-bold">{title}</h3>
+                <p class="mt-1 text-sm leading-relaxed text-white/80">{body}</p>
+              </li>
+            ))
+          }
+        </ol>
+        <div class="hp-frame" data-reveal="right">
+          <Image
+            src={aboutPhoto}
+            alt="A recovery and nutrition session with BAPN players"
+            width={1200}
+            height={900}
+            class="h-full w-full object-cover"
+          />
+        </div>
+      </div>
+      <div class="mt-10 flex flex-wrap gap-3" data-reveal>
+        <a href="/about" class="btn-ghost-light">About BAPN</a>
+        <a href="/about#coaches" class="btn-ghost-light">Meet the coaches</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Events & Gallery -->
+  <section class="hp-band bg-white">
+    <div class="container-x">
+      <p class="hp-num text-volt-500" data-reveal>05</p>
+      <h2 class="hp-title text-navy" data-reveal>Events<br />and gallery.</h2>
+    </div>
+    <div class="hp-strip mt-10" data-reveal>
+      {
+        news.map((item) => {
+          const photo = photoFor(item.photo);
+          return (
+            <a href={`/news/${item.slug}`} class="hp-strip-card">
+              {photo && (
+                <Image src={photo} alt="" width={800} height={600} class="aspect-4/3 w-full rounded-2xl object-cover object-top" />
+              )}
+              <p class="mt-3 text-xs font-bold uppercase tracking-widest text-volt-500">{item.category}</p>
+              <h3 class="mt-1 text-lg font-bold leading-snug text-ink-900">{item.title}</h3>
+            </a>
+          );
+        })
+      }
+    </div>
+    <div class="container-x">
+      <div class="mt-12 grid gap-5 md:grid-cols-3">
+        {
+          quotes.map((q, i) => (
+            <figure class="rounded-2xl bg-shuttle-100 p-6" data-reveal style={`--d:${i * 90}ms`}>
+              <blockquote class="text-base leading-relaxed text-ink-800">“{q.text}”</blockquote>
+              <figcaption class="mt-4 text-sm font-bold text-navy">{q.by}</figcaption>
+            </figure>
+          ))
+        }
+      </div>
+      <a href="/news" class="btn-dark mt-8" data-reveal>See all events</a>
+    </div>
+  </section>
+
+  <!-- 6. Schools -->
+  <section class="hp-band bg-navy text-white">
+    <div class="container-x grid items-center gap-10 lg:grid-cols-2">
+      <div>
+        <p class="hp-num text-volt-300" data-reveal>06</p>
+        <h2 class="hp-title" data-reveal>At your<br />school.</h2>
+        <p class="mt-6 max-w-md text-lg text-white/85" data-reveal>
+          Weekly coaching, term blocks and tournament prep on your courts. Rangi Ruru, coached by
+          BAPN, won back-to-back South Island gold.
+        </p>
+        <a href="/schools" class="btn-ghost-light mt-7" data-reveal>For schools</a>
+      </div>
+      <div class="hp-frame" data-reveal="right">
+        <Image
+          src={schoolsPhoto}
+          alt="The Rangi Ruru team with their gold medals and BAPN coach"
+          width={1200}
+          height={1200}
+          class="h-full w-full object-cover object-top"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Partners -->
+  <section class="hp-band-short bg-white">
+    <div class="container-x">
+      <p class="hp-num text-volt-500" data-reveal>07</p>
+      <h2 class="hp-title-sm text-navy" data-reveal>Our partners.</h2>
+      <div class="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4" data-reveal>
+        {partners.map((p) => <PartnerLogo partner={p} />)}
+      </div>
+      <a href="/partners" class="btn-ghost mt-8" data-reveal>Our partners</a>
+    </div>
+  </section>
+
+  <!-- 8. Contact -->
+  <section class="hp-band bg-navy text-white">
+    <div class="container-x">
+      <p class="hp-num text-volt-300" data-reveal>08</p>
+      <h2 class="hp-title" data-reveal>Ready to<br /><span class="hp-outline">get on court?</span></h2>
+      <div class="mt-8 flex flex-wrap gap-3" data-reveal>
+        <a href={cta.href} class="btn-primary">{cta.label}</a>
+        <a href={`${cta.href}?trial=1`} class="btn-ghost-light">Book a free trial</a>
+        <a href="/contact" class="btn-ghost-light">Message us</a>
+      </div>
+      <p class="mt-8 text-white/80" data-reveal>
+        {site.venue.name}, {site.venue.address}, {site.venue.suburb} ·
+        <a href={`mailto:${site.email}`} class="underline underline-offset-4">{site.email}</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Phones: sign-up always in reach -->
+  <div class="hp-bar">
+    <a href={cta.href} class="btn-primary flex-1 text-center">{cta.label}</a>
+    <a href={`${cta.href}?trial=1`} class="btn-ghost flex-1 bg-white text-center">Free trial</a>
+  </div>
+  <div class="h-20 bg-ink-950 md:hidden" aria-hidden="true"></div>
 </Base>
+
+<style is:global>
+  .hp-display,
+  .hp-title {
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.035em;
+    line-height: 0.92;
+  }
+  .hp-display {
+    font-size: clamp(2.9rem, 12.5vw, 8.5rem);
+  }
+  .hp-title {
+    font-size: clamp(2.6rem, 10vw, 6.5rem);
+  }
+  .hp-title-sm {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+  }
+  /* Fill in the band colour, painted over the stroke, so overlapping glyph
+     contours inside the letters stay hidden. */
+  .hp-outline {
+    color: var(--color-navy);
+    -webkit-text-stroke: 3px #fff;
+    paint-order: stroke fill;
+  }
+  .hp-num {
+    font-size: 0.85rem;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.75rem;
+  }
+  .hp-band {
+    padding-block: clamp(4rem, 12vh, 9rem);
+    overflow: hidden;
+  }
+  .hp-band-short {
+    padding-block: clamp(3rem, 8vh, 6rem);
+  }
+  .hp-frame {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 1.5rem;
+  }
+
+  /* Programme cards */
+  .hp-card {
+    position: relative;
+    display: block;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    color: #fff;
+  }
+  @media (min-width: 768px) {
+    .hp-card {
+      aspect-ratio: 5 / 6;
+    }
+  }
+  .hp-card-img {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .hp-card:hover .hp-card-img {
+    transform: scale(1.05);
+  }
+  .hp-card-body {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(18, 21, 66, 0.92), rgba(18, 21, 66, 0));
+    padding-top: 6rem;
+  }
+
+  /* Sideways strip */
+  .hp-strip {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-inline: max(1.25rem, calc((100vw - 78rem) / 2 + 2rem));
+    padding-bottom: 0.5rem;
+    scrollbar-width: none;
+  }
+  .hp-strip::-webkit-scrollbar {
+    display: none;
+  }
+  .hp-strip-card {
+    flex: 0 0 78vw;
+    max-width: 22rem;
+    scroll-snap-align: start;
+  }
+
+  /* Phone sign-up bar */
+  .hp-bar {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 40;
+    display: none;
+    gap: 0.5rem;
+    padding: 0.6rem 0.75rem calc(0.6rem + env(safe-area-inset-bottom));
+    background: rgba(255, 255, 255, 0.96);
+    border-top: 1px solid var(--color-ink-100);
+  }
+
+  @media (max-width: 767px) {
+    .hp-bar {
+      display: flex;
+    }
+  }
+
+  /* ---------- Opening, static (no JS / reduced motion) ---------- */
+  .hp-stick {
+    position: relative;
+    display: flex;
+    min-height: calc(100svh - 4rem);
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 1.5rem;
+    overflow: hidden;
+    padding-block: 3rem;
+  }
+  .hp-photo,
+  .hp-photo-in {
+    position: absolute;
+    inset: 0;
+  }
+  .hp-shade {
+    position: absolute;
+    inset: 0;
+    background: var(--color-navy);
+    opacity: 0.72;
+  }
+  .hp-head,
+  .hp-cap {
+    position: relative;
+  }
+  .hp-court {
+    position: absolute;
+    right: -12%;
+    top: -18%;
+    height: 135%;
+    color: rgba(255, 255, 255, 0.1);
+    display: none;
+  }
+  .hp-hint {
+    display: none;
+  }
+
+  /* ---------- Opening, with motion ---------- */
+  html.motion .hp-pin {
+    height: 260svh;
+  }
+  html.motion .hp-stick {
+    position: sticky;
+    top: 4rem;
+    height: calc(100svh - 4rem);
+    min-height: 0;
+    padding: 0;
+    display: block;
+    /* Where the photo window starts: its size as a share of the screen. */
+    --sx0: 0.5;
+    --sy0: 0.44;
+  }
+  @media (min-width: 768px) {
+    html.motion .hp-stick {
+      top: 5rem;
+      height: calc(100svh - 5rem);
+      --sx0: 0.36;
+      --sy0: 0.7;
+    }
+  }
+  html.motion .hp-court,
+  html.motion .hp-photo,
+  html.motion .hp-photo-in,
+  html.motion .hp-head,
+  html.motion .hp-cap {
+    will-change: transform, opacity;
+  }
+  html.motion .hp-court {
+    display: block;
+  }
+  /* The window grows by scaling; the picture inside is scaled back by the
+     same amount, so it stays still while more of it is uncovered. Only
+     transforms and opacity change, which the browser can animate cheaply. */
+  html.motion .hp-photo {
+    overflow: hidden;
+    transform-origin: 94% 8%;
+  }
+  html.motion .hp-photo-in {
+    transform-origin: 94% 8%;
+  }
+  @media (min-width: 768px) {
+    html.motion .hp-photo,
+    html.motion .hp-photo-in {
+      transform-origin: 95% 50%;
+    }
+  }
+  html.motion .hp-shade {
+    opacity: 0;
+  }
+  html.motion .hp-head {
+    position: absolute;
+    inset: auto 0 9% 0;
+  }
+  html.motion .hp-cap {
+    position: absolute;
+    inset: auto 0 12% 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+  html.motion .hp-stick.is-end .hp-cap {
+    pointer-events: auto;
+  }
+  html.motion .hp-hint {
+    position: absolute;
+    left: 50%;
+    bottom: 1.25rem;
+    display: block;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+  }
+  @media (max-width: 767px) {
+    html.motion .hp-hint {
+      bottom: 5.5rem;
+    }
+    html.motion .hp-cap {
+      inset: auto 0 6.5rem 0;
+    }
+    html.motion .hp-head {
+      inset: auto 0 7.5rem 0;
+    }
+  }
+
+  /* ---------- Reveal as you scroll ---------- */
+  html.motion [data-reveal] {
+    opacity: 0;
+    transform: translateY(48px);
+    transition:
+      opacity 0.7s ease var(--d, 0ms),
+      transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms);
+  }
+  html.motion [data-reveal='left'] {
+    transform: translateX(-64px);
+  }
+  html.motion [data-reveal='right'] {
+    transform: translateX(64px);
+  }
+  html.motion [data-reveal].in {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+
+<script>
+  import Lenis from 'lenis';
+  import 'lenis/dist/lenis.css';
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce) {
+    document.documentElement.classList.add('motion');
+
+    // Same smooth-scroll library the reference site uses: wheel scrolling
+    // glides instead of stepping. Touch scrolling stays native.
+    const lenis = new Lenis({ anchors: true, lerp: 0.09 });
+
+    const pin = document.querySelector<HTMLElement>('[data-pin]');
+    const stick = pin?.querySelector<HTMLElement>('.hp-stick');
+    const el = (sel: string) => stick?.querySelector<HTMLElement>(sel) ?? null;
+    const photo = el('.hp-photo');
+    const photoIn = el('.hp-photo-in');
+    const shade = el('.hp-shade');
+    const head = el('.hp-head');
+    const cap = el('.hp-cap');
+    const court = el('.hp-court');
+    const hint = el('.hp-hint');
+
+    const clamp = (n: number) => Math.min(1, Math.max(0, n));
+    const ease = (t: number) => t * t * (3 - 2 * t);
+
+    let sx0 = 0.4;
+    let sy0 = 0.6;
+    let total = 1;
+    let top = 0;
+    const measure = () => {
+      if (!pin || !stick) return;
+      const cs = getComputedStyle(stick);
+      sx0 = parseFloat(cs.getPropertyValue('--sx0')) || 0.4;
+      sy0 = parseFloat(cs.getPropertyValue('--sy0')) || 0.6;
+      top = parseFloat(cs.top) || 0;
+      total = Math.max(1, pin.offsetHeight - stick.offsetHeight);
+    };
+
+    // Scroll sets the target; what's drawn eases towards it every frame, so
+    // the sequence stays fluid even when the scroll arrives in steps.
+    let target = 0;
+    let current = -1;
+    const readTarget = () => {
+      if (!pin) return;
+      target = clamp((top - pin.getBoundingClientRect().top) / total);
+    };
+
+    const draw = (p: number) => {
+      if (!stick) return;
+      const a = ease(clamp((p - 0.03) / 0.52));
+      const b = ease(clamp((p - 0.6) / 0.3));
+      const sx = sx0 + (1 - sx0) * a;
+      const sy = sy0 + (1 - sy0) * a;
+      if (photo) {
+        photo.style.transform = `scale(${sx}, ${sy})`;
+        const r = 28 * (1 - a);
+        photo.style.borderRadius = `${r / sx}px / ${r / sy}px`;
+      }
+      if (photoIn) photoIn.style.transform = `scale(${1 / sx}, ${1 / sy})`;
+      if (shade) shade.style.opacity = String(b * 0.72);
+      if (head) {
+        head.style.transform = `translate3d(${-90 * a}vw, 0, 0)`;
+        head.style.opacity = String(clamp(1 - a * 1.3));
+      }
+      if (cap) {
+        cap.style.transform = `translate3d(0, ${(1 - b) * 48}px, 0)`;
+        cap.style.opacity = String(b);
+      }
+      if (court) court.style.transform = `translate3d(${-22 * p}vw, 0, 0) rotate(${8 + 10 * p}deg)`;
+      if (hint) hint.style.opacity = String(clamp(1 - p * 6));
+      stick.classList.toggle('is-end', p > 0.78);
+    };
+
+    let last = performance.now();
+    const frame = (now: number) => {
+      lenis.raf(now);
+      readTarget();
+      const dt = Math.min(64, now - last);
+      last = now;
+      if (current < 0) current = target;
+      const k = 1 - Math.exp(-dt / 110);
+      const next = Math.abs(target - current) < 0.0004 ? target : current + (target - current) * k;
+      if (next !== current) {
+        current = next;
+        draw(current);
+      }
+      requestAnimationFrame(frame);
+    };
+
+    measure();
+    readTarget();
+    current = target;
+    draw(current);
+    window.addEventListener('resize', () => {
+      measure();
+      readTarget();
+      draw(current);
+    });
+    requestAnimationFrame(frame);
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        }
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -8% 0px' },
+    );
+    document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
+  }
+</script>
